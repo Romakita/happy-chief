@@ -1,90 +1,188 @@
-// bower:scss
-// endbower
+$body-font-color: #444 !default;
+$body-font-family:"Georgia","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif !default;
+$body-font-size:0.8em !default;
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+@import
+"topbar",
+"../bower_components/foundation/scss/foundation",
+"../bower_components/font-awesome/css/font-awesome.min.css";
+
+html {
+  font: 112.5%/1.65 serif;
 }
-
-/* Space out content a bit */
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    font-size:0.8em;
+    -moz-hyphens: auto;
+    word-wrap: break-word;
+    background: url('../images/bg/content-bg.gif') repeat scroll center center #E8E8E8;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
+a {
+  color: #333;
+}
+
+
+.container:after {
+    clear: both;
+}
+.container:before, .container:after {
+    content: " ";
+    display: table;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #e5e5e5;
+.container .row{
+  max-width:none;
 }
 
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+@media only screen and (min-width: 90.063em) { 
+	.container {
+		max-width: 1170px;
+	}
 }
 
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
+/* TopBar */
+.top-bar .name h1 a {
+ padding-left: 13.667px
+}
+.top-bar-section{
+  padding-top:20px;
+}
+.top-bar-section li:not(.has-form) a:not(.button){
+  line-height:40px;
 }
 
-.container-narrow > hr {
-    margin: 30px 0;
+.top-bar-section .has-dropdown > a:after {
+  top:20px;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+/* Recipe Cards */
+#primary .grid .page .published-time span, #primary .grid .post .published-time span {
+  background: none repeat scroll 0% 0% #FFF;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+#primary .grid .page .attachment-post-thumbnail:hover, #primary .grid .post .attachment-post-thumbnail:hover {
+  opacity: 0.6;
+}
+#primary .grid .page .attachment-post-thumbnail, #primary .grid .post .attachment-post-thumbnail {
+  transition: all 0.2s ease-in-out 0s;
 }
 
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
+#primary .grid .page, #primary .grid .post {
+  background: none repeat scroll 0% 0% #FFF;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  float: left;
+  padding: 0px;
+  margin: 10px;
+  width: 355px;
 }
 
-.marketing p + h4 {
-    margin-top: 28px;
+.post-thumbnail {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
+.published-time {
+  display: block;
+  font-size: 11px;
+  margin: 10px 15px 0px;
+  text-align: center;
+  text-decoration: none;
+  background: url('../images/double-line.png') repeat-x scroll center center transparent;
+}
 
-    /* Remove the padding we set earlier */
-    .header,
-    .marketing,
-    .footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    /* Space out the masthead */
-    .header {
-        margin-bottom: 30px;
-    }
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-        border-bottom: 0;
-    }
+.published-time span {
+  background: none repeat scroll 0% 0% #E8E8E8;
+  display: inline-block;
+  padding: 0px 10px;
+  font-family: "Lucida Grande",Tahoma;
+  font-size: 10px;
+  font-weight: lighter;
+  font-variant: normal;
+  text-transform: uppercase;
+  text-align: center !important;
+  letter-spacing: 0.3em;
+}
+
+#primary .grid .page h2.entry-title, #primary .grid .post h2.entry-title {
+  color: #000;
+  font-family: "Droid Serif",sans-serif;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 23px;
+  margin: 0px 15px -1px;
+  padding: 10px;
+  text-align: center;
+}
+
+#primary .grid .page footer, #primary .grid .post footer {
+  background: url('../images/double-line.png') repeat-x scroll center top #FAFAFA;
+  box-shadow: 0px 0px 10px #FFF inset;
+  padding: 10px 0px;
+  margin-top: 10px;
+  font-size: 11px;
+  font-family: "Arial",sans-serif;
+}
+.post-meta {
+  list-style: none outside none;
+  margin: 0px;
+  padding: 0px 15px;
+  overflow: hidden;
+  font-size: 11px;
+}
+#primary .grid .page footer ul, #primary .grid .post footer ul {
+  list-style: none outside none;
+  margin: 0px;
+  padding: 0px 15px;
+  overflow: hidden;
+}
+
+.post-meta li {
+  float: right;
+  padding-right: 10px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
+.post-meta li a{
+  line-height: 14px;
+  padding-left: 15px;
+}
+
+.post-meta .fa {
+  /*display: inline-block;*/
+  color: #888;
+  /*text-decoration: none;
+  vertical-align: middle;*/
+  margin-right:5px;
+  /*font-size:13px;
+  line-height:1em;*/
+}
+/*
+.post-meta .fa:before {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: inline-block;
+  margin: 0px 5px 0px 0px;
+  color: #1D1D1B;
+  vertical-align: middle;
+  text-transform: none;
+}
+
+.post-meta .fa:before {
+  font-size: 12px;
+  color: #888;
+  transition: all 0.5s ease-out 0s;
+}*/
+
+#primary .grid .page footer, #primary .grid .post footer {
+  font-size: 11px;
+  font-family: "Arial",sans-serif;
 }

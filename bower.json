@@ -8,12 +8,14 @@
     "angular-resource": "1.2.15",
     "angular-cookies": "1.2.15",
     "angular-sanitize": "1.2.15",
-    "angular-route": "1.2.15",
-    "angular-foundation": "~0.3.0",
-    "foundation": "~5.3.1"
+    "angular-route": "1.2.15"
   },
   "devDependencies": {
+    "foundation": "~5.3.1",
     "angular-mocks": "1.2.15",
-    "angular-scenario": "1.2.15"
+    "angular-scenario": "1.2.15",
+    "angular-foundation": "~0.3.0",
+    "font-awesome": "~4.1.0",
+    "Bower-Glyphicons": "*"
   }
 }

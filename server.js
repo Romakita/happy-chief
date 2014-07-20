@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded()); // to support URL-encoded bodies
 //
 // CONSTANTES
 //
-app.DB_NAME =       'happy-chief-recettes';
+app.DB_NAME =       'happy-chief';
 app.HOST =          'localhost';
 app.SECRET_KEY =    app.DB_NAME + app.HOST + 'secret';
 app.connectionDB =  null;

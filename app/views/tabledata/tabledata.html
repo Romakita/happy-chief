@@ -1,0 +1,74 @@
+<div class="tabledata">
+
+    <!-- insert Pagination -->
+    <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    <!-- end -->
+    <div class="clearfix"></div>
+    <!-- toolbar -->
+
+    <div class="row collapse">
+        <div class="small-6 large-8 columns">
+            <div class="button-bar">
+
+                <ul class="button-group" ng-show="showCreate">
+                    <li><a href="{{href}}/create" class="button tiny radius btn-create" ng-click="onClickCreate($event)"> {{labelCreate || 'Créer'}}</a></li>
+                </ul>
+
+                <ul class="button-group radius paginations">
+                    <li><a class="button tiny secondary itemsperpage skip-1" ng-class="itemsPerPage == paginations[0] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[0])"><i class="fa fa-list"></i> {{paginations[0]}}</a></li>
+                    <li><a class="button tiny secondary itemsperpage skip-2" ng-class="itemsPerPage == paginations[1] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[1])"><i class="fa fa-list"></i> {{paginations[1]}}</a></li>
+                    <li><a class="button tiny secondary itemsperpage skip-3" ng-class="itemsPerPage == paginations[2] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[2])"><i class="fa fa-list"></i> {{paginations[2]}}</a></li>
+                </ul>
+
+                <span ng-transclude>
+
+                </span>
+            </div>
+        </div>
+
+        <div class="small-6 large-4 columns">
+            <div class="row collapse search-field">
+                <div class="small-4 columns">
+                    <label for="right-label" class="right inline" style="margin-right:10px">Rechercher : </label>
+                </div>
+                <div class="small-8 columns">
+                    <input type="text" id="right-label" placeholder="Saisissez votre recherche..." ng-model="search">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="horizontal-scroll">
+        <table class="table-bordered table" style="width:100%">
+            <thead>
+            <tr>
+                <th ng-show="editable || removable" width="{{removable && editable ? 105 : 55}}" class="col-actions"></th>
+                <th ng-repeat="data in header" width="{{data.width}}}" class="{{data.className}} col-{{data.key | lowercase}}" style="{{data.style}}" ng-click="onClickFieldHeader(data)">
+
+                    <span>{{data.label}}</span>
+
+                    <span class="sort-button" ng-show="data.sortable && data.key == sortField">
+                        <i class="fa fa-caret-up" ng-show="sortOrder == 'asc'"></i>
+                        <i class="fa fa-caret-down" ng-show="sortOrder == 'desc'"></i>
+                    </span>
+
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="item in list" ng-class-odd="'odd'" ng-class-even="'even'">
+                <td ng-show="editable || removable" class="col-actions">
+                    <a href="{{href + '/' + item._id}}/edit" class="button tiny radius white action" ng-show="editable"><i class="fa fa-pencil"></i></a>
+
+                    <a ng-click="openRemove($event, item)" class="button tiny radius white action" ng-show="removable"><i class="fa fa-trash-o"></i></a>
+                </td>
+                <td ng-repeat="options in header" class="{{options.className}} col-{{options.key | lowercase}}" style="{{options.style}}">{{rendererField(item, options)}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- insert Pagination -->
+    <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    <!-- end -->
+</div>
