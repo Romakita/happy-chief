@@ -67,3 +67,4 @@ process.on('exit', function(){
 // install
 //
 require('./lib/grabber').initialize(app);
+require('./lib/recipe').initialize(app);

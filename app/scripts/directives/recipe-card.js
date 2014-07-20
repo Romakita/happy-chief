@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tqiApp')
-    .controller('TableDataController', function ($scope, $attrs, $parse, $interpolate, $routeParams, $location, $modal) {
+angular.module('happyChiefApp')
+    .controller('RecipeCardController', function ($scope, $attrs, $parse, $interpolate, $routeParams, $location, $modal) {
         var self = this;
 
         if(typeof $attrs.sortDefault !== 'undefined'){
@@ -30,60 +30,12 @@ angular.module('tqiApp')
         //
         $scope.search =         $routeParams.search ? $routeParams.search : '';
 
-        $scope.rendererField = function(item, options){
-            var value = options.value ? item[options.key][options.value] : item[options.key];
-
-            if(typeof options.filter === 'function'){
-                return options.filter.call(this, value);
-            }
-
-            return value;
-        };
-
-        $scope.onClickFieldHeader = function(data){
-            if(data.sortable){
-                if(data.key != $scope.sortField){
-                    $scope.sortOrder = 'asc';
-                }else{
-                    $scope.sortOrder = $scope.sortOrder == 'asc' ? 'desc' : 'asc';
-                }
-
-                $scope.sortField = data.key;
-
-                self.loadList();
-            }
-        };
-
         $scope.onChangeItemsPerPage = function(value){
             $scope.itemsPerPage = value;
             $scope.currentPage =  1;
 
             self.setPath();
             self.loadList();
-        };
-
-        $scope.openRemove = function(event, item) {
-
-            if(typeof $attrs.popinTemplate !== 'undefined'){
-                event.preventDefault();
-
-                var modalInstance = $modal.open({
-                    templateUrl:    $attrs.popinTemplate,
-                    controller:     "TableDataModalController",
-                    resolve: {
-                        item: function () {
-                            return item;
-                        },
-                        onCloseRemove: function(){
-                            return $scope.onCloseRemove;
-                        }
-                    }
-                });
-
-                return false;
-            }
-
-            $location.path($scope.href.replace('#','') + '/' + item._id + '/remove');
         };
 
         this.loadList = function(){
@@ -99,6 +51,8 @@ angular.module('tqiApp')
             options = angular.extend(options, $scope.parameters || {});
 
             $scope.loader(options).success(function (obj) {
+                console.log(obj);
+
                 $scope.list =           obj.data;
                 $scope.totalItems =     obj.maxLength;
                 $scope.showPagination = obj.maxLength > $scope.itemsPerPage;
@@ -122,59 +76,31 @@ angular.module('tqiApp')
             self.loadList();
         };
 
-        $scope.onClickCreate = function(event){
-
-            if(typeof $scope.onCreate == 'function'){
-                return $scope.onCreate.call(this, event);
-            }
-
-        };
-
-        $scope.$watch('search', function(value){
+        /*$scope.$watch('search', function(value){
             $scope.currentPage = 1;
             $scope.skip =        ($scope.currentPage-1) * ($scope.itemsPerPage);
             self.loadList();
-        });
+        });*/
 
         $scope.$watch('parameters', function(){
             self.loadList();
         });
     })
-    .directive('tableData', function ($parse) {
+
+    .directive('recipeCard', function ($parse) {
         return {
             restrict:       'EA',
-            controller:     'TableDataController',
-            templateUrl:    'views/tabledata/tabledata.html',
+            controller:     'RecipeCardController',
+            templateUrl:    'views/recipe/card.html',
             transclude:     true,
             scope: {
-                //list:           '=',
-                header:         '=',
                 href:           '@',
-                editable:       '=',
-                removable:      '=',
                 loader:         '=',
-                onCreate:        '=',
-                labelCreate:    '@',
-                onCloseRemove:  '=',
                 parameters:     '='
             },
             replace:            true,
             link: function postLink(scope, element, attrs, tableDataCtrl) {
                 scope.showCreate = typeof attrs.create == 'undefined' ? true : attrs.create;
             }
-        };
-    })
-
-    .controller('TableDataModalController', function ($scope, $modalInstance, item, onCloseRemove) {
-
-        angular.extend($scope, item);
-        $modalInstance.$scope = $scope;
-
-        $scope.submit = function () {
-            onCloseRemove.call($modalInstance, item);
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
         };
     });

@@ -1,0 +1,67 @@
+<div class="recipe-cards">
+
+    <!-- toolbar -->
+
+    <div class="row collapse">
+        <div class="small-6 large-6 columns">
+            <div class="button-bar">
+
+                <ul class="button-group radius paginations">
+                    <li><a class="button tiny secondary itemsperpage skip-1" ng-class="itemsPerPage == paginations[0] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[0])"><i class="fa fa-list"></i> {{paginations[0]}}</a></li>
+                    <li><a class="button tiny secondary itemsperpage skip-2" ng-class="itemsPerPage == paginations[1] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[1])"><i class="fa fa-list"></i> {{paginations[1]}}</a></li>
+                    <li><a class="button tiny secondary itemsperpage skip-3" ng-class="itemsPerPage == paginations[2] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[2])"><i class="fa fa-list"></i> {{paginations[2]}}</a></li>
+                </ul>
+
+                <span ng-transclude>
+
+                </span>
+            </div>
+        </div>
+
+        <div class="small-6 large-6 columns">
+            <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
+
+    </div>
+
+    <div class="horizontal-scroll grid">
+
+        <article style="" ng-repeat="item in list" class="post-836 post type-post status-publish format-standard has-post-thumbnail hentry post" id="post-836">
+
+            <div class="post-thumbnail">
+                <a href="" title="{{item.title}}" rel="bookmark">
+                    <img src="{{item.picture}}" class="attachment-post-thumbnail wp-post-image" alt="{{item.title}}" height="215" width="360">
+                </a>
+            </div>
+
+            <!--<a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/" class="published-time" title="8:27 pm" rel="bookmark">
+                <span class="entry-date">February 29, 2012</span>
+            </a>-->
+
+            <h2 class="entry-title">
+                <a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/" title="{{item.title}}" rel="bookmark">{{item.title.replace('Recette de ', '')}}</a>
+            </h2>
+
+            <footer>
+                <ul class="post-meta">
+                    <!--<li><a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/#comments" class="glyphicons comments" title="Comment on Daeji Bulgogi"><span>6</span> </a></li>-->
+
+                    <li class="recipe-time">
+                        <span class="fa fa-dashboard"></span>
+                        1h
+                    </li>
+                    <li class="recipe-servings"><span class="fa fa-glass" href="#"></span>2 pers.</a> </span></li>
+                    <li class="recipe-level">
+                        <span class="fa fa-signal" href="#"></span>
+                        <em>Niveau :</em> Facile
+                    </li>
+                </ul>
+            </footer>
+
+        </article>
+
+    </div>
+    <!-- insert Pagination -->
+    <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    <!-- end -->
+</div>
