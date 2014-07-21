@@ -69,9 +69,9 @@ module.exports = function (grunt) {
         // The actual grunt server settings
         connect: {
             options: {
-                port: 9000,
+                port: 5500,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname:   'localhost',
+                hostname:   '10.61.0.16',
                 livereload: 35729
             },
             livereload: {
@@ -409,8 +409,19 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('install', 'Install db application', function () {
-        require('./lib/data.js').install(this.async(), grunt.log.writeln);
+        require('./lib/data').install(this.async(), grunt.log.writeln);
     });
+
+    grunt.registerTask('grabber', 'Get recipe from website', function () {
+        var done = this.async();
+        var grabber = require('./lib/grabber');
+
+        grabber.getRecipes().then(function(){
+            grunt.log.writeln('DONE');
+            done();
+        });
+    });
+
 
     grunt.registerTask('test', [
         'clean:server',
