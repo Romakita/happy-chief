@@ -4,6 +4,7 @@
   "dependencies": {
     "htmlparser2": "^3.7.3",
     "mongoose": "^3.8.13",
+    "node-zip": "^1.1.0",
     "promise": "^5.0.0"
   },
   "devDependencies": {

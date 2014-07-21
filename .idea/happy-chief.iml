@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/data/1" />
+      <excludeFolder url="file://$MODULE_DIR$/data/2" />
+      <excludeFolder url="file://$MODULE_DIR$/data/3" />
+      <excludeFolder url="file://$MODULE_DIR$/data/4" />
+      <excludeFolder url="file://$MODULE_DIR$/data/5" />
+      <excludeFolder url="file://$MODULE_DIR$/data/6" />
+      <excludeFolder url="file://$MODULE_DIR$/data/7" />
+      <excludeFolder url="file://$MODULE_DIR$/data/8" />
+      <excludeFolder url="file://$MODULE_DIR$/data/9" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="happy-chief-recettes node_modules" level="project" />

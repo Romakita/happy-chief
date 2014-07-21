@@ -71,7 +71,7 @@ module.exports = function (grunt) {
             options: {
                 port: 9000,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
+                hostname:   '10.61.0.16',
                 livereload: 35729
             },
             livereload: {
@@ -406,6 +406,10 @@ module.exports = function (grunt) {
     grunt.registerTask('server', function (target) {
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
+    });
+
+    grunt.registerTask('install', 'Install db application', function () {
+        require('./lib/data.js').install(this.async(), grunt.log.writeln);
     });
 
     grunt.registerTask('test', [
