@@ -104,6 +104,14 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     base: '<%= yeoman.dist %>'
+                },
+                middleware: function (connect) {
+                    return [
+                        // lrSnippet,
+                        mountFolder(connect, '.tmp'),
+                        mountFolder(connect, 'app'),
+                        require('./server.js') // your server packaged as a nodejs module
+                    ];
                 }
             }
         },
