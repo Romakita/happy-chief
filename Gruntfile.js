@@ -97,8 +97,7 @@ module.exports = function (grunt) {
                             connect.static('.tmp'),
                             connect.static('test'),
                             connect().use('/bower_components', connect.static('./bower_components')),
-                            connect.static(config.app),
-                            require('./server.js')
+                            connect.static(config.app)
                         ];
                     }
                 }
@@ -106,7 +105,12 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     base: '<%= config.dist %>',
-                    livereload: false
+                    livereload: false,
+                    middleware: function(connect) {
+                        return [
+                            require('./server.js')
+                        ];
+                    }
                 }
             }
         },
