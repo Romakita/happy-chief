@@ -11,11 +11,15 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
+                templateUrl: 'views/recipes-list.html',
                 controller: 'RecipeListCtrl'
             })
+            .when('/recipes/show/:id/:title', {
+              templateUrl: 'views/recipe.html',
+              controller: 'RecipeCtrl'
+            })
             .when('/recipes/:page?/:limit?/:search?', {
-                templateUrl: 'views/main.html',
+                templateUrl: 'views/recipes-list.html',
                 controller: 'RecipeListCtrl'
             })
             .otherwise({
