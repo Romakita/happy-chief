@@ -28,7 +28,7 @@ angular
 
         $rootScope.$on('$viewContentLoaded', function () {
             console.log('$viewContentLoaded');
-            //$(document).foundation();
+            //
         });
         //
         // Protection des routes

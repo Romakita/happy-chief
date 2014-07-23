@@ -21,7 +21,7 @@ $topbar-dropdown-toggle-color: #000;
 $topbar-dropdown-toggle-alpha: 0.5;
 
 /* Set the link colors and styles for top-level nav */
-$topbar-link-color: #333;
+$topbar-link-color: #444;
 $topbar-link-color-hover: #444;
 $topbar-link-color-active: #444;
 $topbar-link-color-active-hover: #444;
@@ -113,15 +113,17 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
   z-index: 1;
   position: relative;
   font-size: 14px;
-  width: 85%;
-  margin-top: -38px;
   padding: 10px 12px;
   line-height: 18px;
-  height: 38px;
-  box-shadow:none;
+  height: 18px;
+  margin-top: -38px;
+  width: 85%;
+  box-sizing: content-box;
+  box-shadow: none;
 }
 .widget input[type="search"]:focus{
   box-shadow:none;
+  background:#F0F0EF;
 
 }
 input[type="search"] {

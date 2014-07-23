@@ -2,10 +2,12 @@ $body-font-color: #444 !default;
 $body-font-family:"Georgia","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif !default;
 $body-font-size:0.8em !default;
 
+// bower:scss
+// endbower
+
 @import
 "topbar",
-"../bower_components/foundation/scss/foundation",
-"../bower_components/font-awesome/css/font-awesome.min.css";
+"../bower_components/foundation/scss/foundation.scss";
 
 html {
   font: 112.5%/1.65 serif;
@@ -51,6 +53,10 @@ a {
 }
 
 /* TopBar */
+.container.sticky.fixed{
+ background:white;
+  border-bottom:1px solid #DFDFDF;
+}
 .top-bar .name h1 a {
  padding-left: 13.667px
 }
