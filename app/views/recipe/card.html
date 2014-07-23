@@ -29,7 +29,7 @@
         <article style="" ng-repeat="item in list" class="post-836 post type-post status-publish format-standard has-post-thumbnail hentry post" id="post-836">
 
             <div class="post-thumbnail">
-                <a href="" title="{{item.title}}" rel="bookmark">
+                <a href="{{href + '/show/' + item._id + '/' + sanitize(item.title)}}" title="{{item.title}}" rel="bookmark">
                     <img src="{{item.picture}}" class="attachment-post-thumbnail wp-post-image" alt="{{item.title}}" height="215" width="360">
                 </a>
             </div>
@@ -39,7 +39,7 @@
             </a>-->
 
             <h2 class="entry-title">
-                <a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/" title="{{item.title}}" rel="bookmark">{{item.title.replace('Recette de ', '')}}</a>
+                <a href="{{href + '/show/' + item._id + '/' + sanitize(item.title)}}" title="{{item.title}}" rel="bookmark">{{item.title.replace('Recette de ', '')}}</a>
             </h2>
 
             <footer>
