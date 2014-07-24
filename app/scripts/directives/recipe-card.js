@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('happyChiefApp')
-    .controller('RecipeCardController', function ($scope, $attrs, $parse, $interpolate, $routeParams, $location, $sanitize) {
+    .controller('CardsContainerController', function ($scope, $attrs, $parse, $interpolate, $routeParams, $location, $sanitize) {
         var self = this;
 
         if (typeof $attrs.sortDefault !== 'undefined') {
@@ -51,9 +51,19 @@ angular.module('happyChiefApp')
             options = angular.extend(options, $scope.parameters || {});
 
             $scope.loader(options).success(function (obj) {
-                console.log(obj);
+                //$scope.list = obj.data;
 
-                $scope.list = obj.data;
+                $scope.list1 =[];
+                $scope.list2 =[];
+
+                for(var i = 0; i < obj.data.length; i++){
+                    if(i % 2 == 0){
+                        $scope.list1.push(obj.data[i]);
+                    }else{
+                        $scope.list2.push(obj.data[i]);
+                    }
+                }
+
                 $scope.totalItems = obj.maxLength;
                 $scope.showPagination = obj.maxLength > $scope.itemsPerPage;
             });
@@ -109,11 +119,15 @@ angular.module('happyChiefApp')
         });
     })
 
-    .directive('recipeCard', function ($parse) {
+    .controller('CardController', function ($scope, $attrs) {
+
+    })
+
+    .directive('cardsContainer', function ($parse) {
         return {
             restrict:       'EA',
-            controller:     'RecipeCardController',
-            templateUrl:    'views/recipe/card.html',
+            controller:     'CardsContainerController',
+            templateUrl:    'views/recipe/cards-container.html',
             transclude:     true,
             scope: {
                 href:           '@',
@@ -121,8 +135,24 @@ angular.module('happyChiefApp')
                 parameters:     '='
             },
             replace:            true,
-            link: function postLink(scope, element, attrs, tableDataCtrl) {
-                scope.showCreate = typeof attrs.create == 'undefined' ? true : attrs.create;
+            link: function postLink(scope, element, attrs) {
+
+            }
+        };
+    })
+    .directive('card', function ($parse) {
+        return {
+            restrict:       'EA',
+            controller:     'CardController',
+            templateUrl:    'views/recipe/card.html',
+            transclude:     true,
+            scope: {
+                href:           '@',
+                item:           '='
+            },
+            replace:            true,
+            link: function postLink(scope, element, attrs) {
+
             }
         };
     });

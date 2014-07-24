@@ -9,6 +9,7 @@ $body-font-size:0.8em !default;
 "topbar",
 "../bower_components/foundation/scss/foundation.scss";
 
+
 html {
   font: 112.5%/1.65 serif;
 }
@@ -16,6 +17,7 @@ body {
     font-size:0.8em;
     -moz-hyphens: auto;
     word-wrap: break-word;
+   font-family: "Georgia","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
     background: url('../images/bg/content-bg.gif') repeat scroll center center #E8E8E8;
 }
 
@@ -72,6 +74,15 @@ a {
 }
 
 /* Recipe Cards */
+#primary .grid .page .entry-content, #primary .grid .post .entry-content {
+  margin: 0px 15px;
+  padding: 10px;
+  line-height:1.65;
+  text-align: center;
+}
+#primary .grid .page h2.entry-title a, #primary .grid .post h2.entry-title a {
+  color: #000;
+}
 #primary .grid .page .published-time span, #primary .grid .post .published-time span {
   background: none repeat scroll 0% 0% #FFF;
 }
@@ -130,7 +141,7 @@ a {
   font-weight: normal;
   line-height: 23px;
   margin: 0px 15px -1px;
-  padding: 10px;
+  padding: 10px 2px;
   text-align: center;
 }
 

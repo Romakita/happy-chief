@@ -1,0 +1,40 @@
+<div class="recipe-cards">
+
+    <!-- toolbar -->
+
+    <div class="row collapse">
+        <div class="small-6 large-6 columns">
+            <div class="button-bar">
+
+                <ul class="button-group radius paginations">
+                    <li><a class="button tiny secondary itemsperpage skip-1" ng-class="itemsPerPage == paginations[0] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[0])"><i class="fa fa-list"></i> {{paginations[0]}}</a></li>
+                    <li><a class="button tiny secondary itemsperpage skip-2" ng-class="itemsPerPage == paginations[1] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[1])"><i class="fa fa-list"></i> {{paginations[1]}}</a></li>
+                    <li><a class="button tiny secondary itemsperpage skip-3" ng-class="itemsPerPage == paginations[2] ? 'selected' : ''" ng-click="onChangeItemsPerPage(paginations[2])"><i class="fa fa-list"></i> {{paginations[2]}}</a></li>
+                </ul>
+
+                <span ng-transclude>
+
+                </span>
+            </div>
+        </div>
+
+        <div class="small-6 large-6 columns">
+            <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
+
+    </div>
+
+    <div class="horizontal-scroll grid">
+        <div class="row collapse">
+            <div class="small-6 large-6 columns">
+                <card ng-repeat="item in list1" data-href="{{href}}" data-item="item"></card>
+            </div>
+            <div class="small-6 large-6 columns">
+                <card ng-repeat="item in list2" data-href="{{href}}" data-item="item"></card>
+            </div>
+        </div>
+    </div>
+    <!-- insert Pagination -->
+    <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    <!-- end -->
+</div>
