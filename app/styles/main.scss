@@ -56,8 +56,13 @@ a {
 
 /* TopBar */
 .container.sticky.fixed{
- background:white;
+  background:white;
   border-bottom:1px solid #DFDFDF;
+  max-width: none;
+}
+.container.sticky.fixed > nav{
+  max-width: 1170px;
+  margin:auto;
 }
 .top-bar .name h1 a {
  padding-left: 13.667px
@@ -73,14 +78,39 @@ a {
   top:20px;
 }
 
+/* */
+.card-navbar{
+  padding:10px;
+  background:white;
+}
+.card-navbar a.button,
+.card-navbar .pagination {
+  margin:0;
+}
 /* Recipe Cards */
+
+
 #primary .grid .page .entry-content, #primary .grid .post .entry-content {
   margin: 0px 15px;
   padding: 10px;
   line-height:1.65;
   text-align: center;
 }
-#primary .grid .page h2.entry-title a, #primary .grid .post h2.entry-title a {
+
+#primary .grid .page h2.entry-title,
+#primary .grid .post h2.entry-title {
+  color: #000;
+  font-family: "Droid Serif",sans-serif;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 23px;
+  margin: 0px 15px -1px;
+  padding: 10px 2px;
+  text-align: center;
+}
+
+#primary .grid .page h2.entry-title a,
+#primary .grid .post h2.entry-title a {
   color: #000;
 }
 #primary .grid .page .published-time span, #primary .grid .post .published-time span {
@@ -130,19 +160,6 @@ a {
   text-transform: uppercase;
   text-align: center !important;
   letter-spacing: 0.3em;
-}
-
-#primary .grid .page h2.entry-title,
-#primary .grid .post h2.entry-title {
-  height:54px;
-  color: #000;
-  font-family: "Droid Serif",sans-serif;
-  font-size: 17px;
-  font-weight: normal;
-  line-height: 23px;
-  margin: 0px 15px -1px;
-  padding: 10px 2px;
-  text-align: center;
 }
 
 #primary .grid .page footer, #primary .grid .post footer {
