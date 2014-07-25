@@ -1,0 +1,320 @@
+.entry-header {
+  font-size: 28px;
+  line-height: 34px;
+  color: rgba(0,0,0,0.9);
+  font-family: 'Droid Serif', sans-serif;
+  font-weight: normal;
+  margin: 0 0px 10px;
+  padding: 10px;
+  text-align: center;
+}
+.page .entry-header {
+  padding-top: 0px;
+}
+.page .published-time {
+  margin-top: 0px;
+}
+.page .post .published-time {
+  margin-top: 10px;
+}
+.page-title {
+  background: url("../images/double-line.png") repeat-x scroll center center transparent;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.page-title span {
+  background: #E8E8E8;
+  padding: 0 10px;
+}
+.entry-title {
+  font-size: 28px;
+  line-height: 34px;
+  margin-bottom: 10px;
+}
+.entry-title a {
+  text-shadow: 1px 1px 1px #fff;
+}
+#author-desc {
+  margin-bottom: 24px;
+  padding-left: 95px;
+}
+.single .published-time {
+  margin: 10px 0px 0px;
+}
+.single .entry-header {
+  padding: 10px 0px;
+}
+.single .entry-meta {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-family: 'Droid Sans', sans-serif;
+  margin-top: 18px;
+  clear: both;
+}
+.single .entry-meta .post-meta {
+  padding: 0px;
+}
+.single .entry-meta .post-meta li {
+  float: left;
+}
+
+/* content */
+.page-content,
+.entry-content,
+.entry-summary {
+  margin: 1.5em 0 0;
+}
+.page-links {
+  clear: both;
+  margin: 0 0 1.5em;
+  font-weight: bold;
+  font-size: 16px;
+  background: url("../images/double-line.png") repeat-x scroll center top;
+  padding-top: 10px;
+}
+.page-links a {
+  font-weight: normal;
+}
+#author-data h4 {
+  margin-bottom: 10px;
+}
+.blog .format-aside .entry-title,
+.archive .format-aside .entry-title {
+  display: none;
+}
+.page-content img.wp-smiley,
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Pureepice*/
+
+.purerecipe-wrapper.tearedh {
+  -moz-transform: rotate(-1deg);
+  -webkit-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+
+  background: url("../images/bg.png") repeat scroll left top transparent;
+  padding: 0;
+}
+
+.tearedh .purerecipe {
+  -moz-transform: rotate(1deg);
+  -webkit-transform: rotate(1deg);
+  transform: rotate(1deg);
+  background: url('../images/bg.png') repeat top left;
+  margin-top: -14px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  box-shadow: 1px 1px 1px #eee;
+  border-radius: 15px 0px 0px 0px;
+  position: relative;
+  margin: 30px 0px;
+}
+
+.tearedh header {
+  padding: 40px 30px 10px;
+}
+
+.tearedh p.author-data {
+  padding: 0px;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.tearedh h4,
+.tearedh h3 {
+  font-family: 'Satisfy','Georgia', cursive;
+  font-size:30px;
+}
+
+.tearedh h4 {
+  margin:0px 0px 15px;
+  padding:15px 0px 0px 0px;
+  font-size:24px;
+  font-weight: normal;
+}
+
+.tearedh .purerecipe:before {
+  background: url("../images/pin-left.png") no-repeat scroll left top transparent;
+  content: "";
+  display: block;
+  height: 69px;
+  position: absolute;
+  right: 41px;
+  top: -19px;
+  width: 72px;
+  z-index: 9999;
+}
+
+.tearedh .recipe-content:before {
+  background: url("../images/coffe-stain.png") no-repeat scroll left top transparent;
+  content: "";
+  display: block;
+  height: 360px;
+  position: absolute;
+  right: 0;
+  top: 233px;
+  width: 139px;
+}
+
+.tearedh .recipe-content {
+  padding: 0px 30px 20px;
+  overflow: hidden;
+}
+
+.tearedh ul.ingredients {
+  width:70%;
+}
+
+.tearedh .instructions{
+  min-height: 200px;
+}
+
+.tearedh ul li.separator {
+  background: none repeat scroll 0 0 transparent;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 15px;
+  padding-left: 0;
+}
+
+.tearedh .instructions ul li.active,
+.tearedh ul.ingredients li.active {
+  background: url("../images/checkbox-checked.png") no-repeat scroll left 6px transparent;
+  padding-left:20px;
+  text-decoration: line-through
+}
+
+.tearedh .recipe-add-data {
+  background: url("../images/yellowcard-bg.png") no-repeat scroll right top #FFFF9E;
+  width:225px;
+  float: right;
+  position: relative;
+  padding:20px;
+  font-size:14px;
+  box-shadow:0px 1px 3px rgba(0,0,0,0.3);
+}
+
+.tearedh .recipe-add-data ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.tearedh .recipe-add-data ul li {
+  margin: 4px 0px;
+}
+
+.tearedh .recipe-add-data em {
+  background: url('../images/penball-line.png') repeat-x bottom;
+}
+
+.tearedh .recipe-add-data:before {
+  background: url("../images/pin-right.png") no-repeat scroll left top transparent;
+  content: "";
+  display: block;
+  height: 70px;
+  position: absolute;
+  right: 41px;
+  top: -15px;
+  width: 57px;
+  z-index: 9999;
+}
+
+.tearedh header {
+  overflow: hidden;
+}
+
+.tearedh header div {
+  float: left;
+}
+
+.tearedh .recipe-image {
+  padding: 5px;
+  background: #fff;
+  float: right;
+  margin-top: -35px;
+  -moz-transform: rotate(2deg);
+  -webkit-transform: rotate(2deg);
+  transform: rotate(2deg);
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+}
+
+.tearedh ul.ingredients,
+.tearedh .instructions ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.tearedh .instructions ul li,
+.tearedh ul.ingredients li {
+  background: url("../images/checkbox.png") no-repeat scroll left 6px transparent;
+  padding-left: 20px;
+  cursor: pointer;
+  margin: 4px 0px;
+}
+
+.tearedh ul.ingredients li a {
+  text-decoration: underline;
+}
+
+.tearedh ul.ingredients li.separator {
+  background: none repeat scroll 0 0 transparent;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 15px;
+  padding-left: 0;
+}
+
+/**Navbar*/
+
+#nav-below {
+  background: url('../images/double-line.png') repeat-x scroll center top #FAFAFA;
+  box-shadow: 0px 0px 10px #FFF inset;
+  clear: both;
+  margin: 35px 0px;
+  overflow: hidden;
+  padding: 10px;
+}
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+#nav-below .nav-previous {
+  float: left;
+  width: 49%;
+  text-align: left;
+  cursor: pointer;
+}
+#nav-below img {
+  background: none repeat scroll 0% 0% #E8E8E8;
+  border: 1px solid #E8E8E8;
+  padding: 5px;
+  float: left;
+  margin-right: 10px;
+}
+#nav-below span {
+  font-size: 10px;
+  font-style: italic;
+  text-decoration: none;
+  text-transform: none;
+}
+#nav-below .nav-next {
+  float: right;
+  width: 49%;
+  text-align: right;
+  cursor: pointer;
+}
+#nav-below .nav-next img {
+  float: right;
+  margin-right: 0px;
+  margin-left: 10px;
+}

@@ -14,7 +14,7 @@ angular
                 templateUrl: 'views/recipes-list.html',
                 controller: 'RecipeListCtrl'
             })
-            .when('/recipes/show/:id/:title', {
+            .when('/recipes/:id', {
               templateUrl: 'views/recipe.html',
               controller: 'RecipeCtrl'
             })
@@ -26,13 +26,21 @@ angular
                 redirectTo: '/'
             });
     })
+
+    .controller('AppController', function ($rootScope, $scope) {
+
+        $scope.$watch('search', function(val){
+
+        });
+
+    })
+
     .run(function ($rootScope, $route, $location) {
 
         console.log('run app');
 
         $rootScope.$on('$viewContentLoaded', function () {
             console.log('$viewContentLoaded');
-            //
         });
         //
         // Protection des routes

@@ -82,7 +82,12 @@ $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 .search-form {
   overflow: hidden;
 }
-
+.switch-label{
+  line-height:31px;
+}
+.switch-label span{
+  margin-left:8px;
+}
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;

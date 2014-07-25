@@ -25,6 +25,8 @@ angular.module('happyChiefApp')
         $scope.itemsPerPage = $routeParams.limit ? $routeParams.limit : 20;
         $scope.skip = ($scope.currentPage - 1) * ($scope.itemsPerPage);
         $scope.hidePagination = true;
+        $scope.havePicture = false;
+        $scope.totalPages = 1;
         //
         // Recherche
         //
@@ -45,7 +47,8 @@ angular.module('happyChiefApp')
                 skip: $scope.skip,
                 search: $scope.search,
                 sortOrder: $scope.sortOrder,
-                sortField: $scope.sortField
+                sortField: $scope.sortField,
+                havePicture: $scope.havePicture
             };
 
             options = angular.extend(options, $scope.parameters || {});
@@ -65,6 +68,7 @@ angular.module('happyChiefApp')
                 }
 
                 $scope.totalItems = obj.maxLength;
+                $scope.totalPages = Math.ceil(obj.maxLength / $scope.itemsPerPage);
                 $scope.showPagination = obj.maxLength > $scope.itemsPerPage;
             });
         };
@@ -108,11 +112,23 @@ angular.module('happyChiefApp')
             self.loadList();
         };
 
-        /*$scope.$watch('search', function(value){
+        $scope.$parent.$watch('search', function(){
             $scope.currentPage = 1;
+            $scope.search =      $scope.$parent.search || '';
+            $scope.havePicture = $scope.$parent.havePicture || '';
             $scope.skip =        ($scope.currentPage-1) * ($scope.itemsPerPage);
+
             self.loadList();
-        });*/
+        });
+
+        $scope.$parent.$watch('havePicture', function(){
+            $scope.currentPage = 1;
+            $scope.search =      $scope.$parent.search || '';
+            $scope.havePicture = $scope.$parent.havePicture || '';
+            $scope.skip =       ($scope.currentPage-1) * ($scope.itemsPerPage);
+
+            self.loadList();
+        });
 
         $scope.$watch('parameters', function(){
             self.loadList();

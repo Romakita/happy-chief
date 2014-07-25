@@ -2,6 +2,14 @@ $body-font-color: #444 !default;
 $body-font-family:"Georgia","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif !default;
 $body-font-size:0.8em !default;
 
+$pagination-li-font-color: #333;
+$pagination-link-font-color: $pagination-li-font-color;
+$pagination-link-active-bg:transparent;
+$pagination-link-current-background: transparent;
+$pagination-link-current-font-color: #444;
+$pagination-link-current-font-weight: bold;
+$pagination-link-current-cursor: default;
+$pagination-link-current-active-bg: transparent;
 // bower:scss
 // endbower
 
@@ -20,11 +28,16 @@ body {
    font-family: "Georgia","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
     background: url('../images/bg/content-bg.gif') repeat scroll center center #E8E8E8;
 }
-
+p, ul, ol, li{
+  font-size:0.8rem;
+}
 a {
   color: #333;
 }
 
+.hentry {
+  margin: 0px 0px 1.5em;
+}
 
 .container:after {
     clear: both;
@@ -55,6 +68,7 @@ a {
 }
 
 /* TopBar */
+
 .container.sticky.fixed{
   background:white;
   border-bottom:1px solid #DFDFDF;
@@ -79,22 +93,54 @@ a {
 }
 
 /* */
+
 .card-navbar{
-  padding:10px;
-  background:white;
+  background: url('../images/double-line.png') repeat-x scroll center bottom #FAFAFA;
+  box-shadow: 0px 0px 10px #FFF inset;
+  clear: both;
+  margin: 35px -15px;
+  overflow: hidden;
+  padding: 10px;
+  height:47px;
+  margin-bottom:20px;
 }
-.card-navbar a.button,
-.card-navbar .pagination {
+.card-navbar.bottom{
+  background-position:center top;
+  margin-top:20px;
+}
+
+.card-navbar ul.pagination li a, .card-navbar ul.pagination li button{
   margin:0;
+  font-size: 15px;
 }
+.card-navbar ul.pagination li a:hover {
+  color: $primary-color;
+}
+
+.card-navbar .lbl-pages{
+  float: left;
+  margin-top: 6px;
+  padding: 0px 5px;
+  color: #888;
+  margin-right: 10px;
+}
+
+ul.pagination li.unavailable{
+  display:none;
+}
+
 /* Recipe Cards */
 
-
-#primary .grid .page .entry-content, #primary .grid .post .entry-content {
+#primary .grid .page .entry-content,
+#primary .grid .post .entry-content {
   margin: 0px 15px;
   padding: 10px;
   line-height:1.65;
   text-align: center;
+}
+#primary .grid .page .entry-content a,
+#primary .grid .post .entry-content a{
+  display: block;
 }
 
 #primary .grid .page h2.entry-title,
@@ -113,18 +159,29 @@ a {
 #primary .grid .post h2.entry-title a {
   color: #000;
 }
-#primary .grid .page .published-time span, #primary .grid .post .published-time span {
+#primary .grid .page .published-time span,
+#primary .grid .post .published-time span {
   background: none repeat scroll 0% 0% #FFF;
 }
-
-#primary .grid .page .attachment-post-thumbnail:hover, #primary .grid .post .attachment-post-thumbnail:hover {
+#primary .grid .post .attachment-post-thumbnail,
+#primary .grid .page .attachment-post-thumbnail{
+  opacity:0;
+}
+#primary .grid .post .attachment-post-thumbnail.loaded,
+#primary .grid .page .attachment-post-thumbnail.loaded{
+  opacity:1;
+}
+#primary .grid .page .attachment-post-thumbnail:hover,
+#primary .grid .post .attachment-post-thumbnail:hover{
   opacity: 0.6;
 }
-#primary .grid .page .attachment-post-thumbnail, #primary .grid .post .attachment-post-thumbnail {
+#primary .grid .page .attachment-post-thumbnail,
+#primary .grid .post .attachment-post-thumbnail {
   transition: all 0.2s ease-in-out 0s;
 }
 
-#primary .grid .page, #primary .grid .post {
+#primary .grid .page,
+#primary .grid .post {
   background: none repeat scroll 0% 0% #FFF;
   border-radius: 5px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
@@ -196,33 +253,15 @@ a {
 }
 
 .post-meta .fa {
-  /*display: inline-block;*/
   color: #888;
-  /*text-decoration: none;
-  vertical-align: middle;*/
   margin-right:5px;
-  /*font-size:13px;
-  line-height:1em;*/
-}
-/*
-.post-meta .fa:before {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  display: inline-block;
-  margin: 0px 5px 0px 0px;
-  color: #1D1D1B;
-  vertical-align: middle;
-  text-transform: none;
 }
 
-.post-meta .fa:before {
-  font-size: 12px;
-  color: #888;
-  transition: all 0.5s ease-out 0s;
-}*/
 
 #primary .grid .page footer, #primary .grid .post footer {
   font-size: 11px;
   font-family: "Arial",sans-serif;
 }
+
+
+@import 'recipe.scss';

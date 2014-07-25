@@ -2,9 +2,9 @@
 
     <!-- toolbar -->
 
-    <div class="card-navbar">
+    <div class="card-navbar" ng-hide="totalPages == 1">
 
-        <span>Page 1 of 3</span>
+        <span class="lbl-pages">Page {{currentPage}} sur {{totalPages}}</span>
         <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 
     </div>
@@ -20,8 +20,9 @@
         </div>
     </div>
 
-    <div class="card-navbar">
-        <span>Page 1 of 3</span>
+    <div class="card-navbar bottom" ng-hide="totalPages == 1">
+
+        <span class="lbl-pages">Page {{currentPage}} sur {{totalPages}}</span>
         <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 
     </div>

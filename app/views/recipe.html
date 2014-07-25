@@ -1,1 +1,112 @@
-<p>This is the recipe view.</p>
+<article id="post-{{data.id}}" class="post-{{data.id}} post type-post status-publish format-standard has-post-thumbnail hentry">
+    <header class="entry-header">
+        <a href="" class="published-time" rel="bookmark"><span class="entry-date updated">Non classé</span></a>
+        <h2 class="entry-title">
+            <a href="" title="{{data.title}}" rel="bookmark">{{data.title}}</a>
+        </h2>
+    </header><!-- .entry-header -->
+
+    <div class="entry-content">
+
+        <div class="purerecipe-wrapper tearedh">
+            <section class="purerecipe" itemscope="" itemtype="http://schema.org/Recipe">
+                <header>
+                    <div>
+                        <h3 itemprop="name">{{data.title}}</h3>
+                        <p class="author-data"><!--By
+                            <a class="recipe-author" itemprop="author"> purethemes</a>-->
+                            <span class="recipe-data"><meta itemprop="datePublished" content="{{data.dateCreate || now | date : 'yyyy-MM-dd'}}">{{(data.dateCreate || now) | date : 'd MMMM yyyy'}}</span>
+                        </p>
+                    </div>
+                    <a>
+                        <img itemprop="image" class="recipe-image" src="{{data.picture || 'images/no-picture.png'}}">
+                    </a>
+                </header>
+
+
+                <div class="recipe-content">
+                    <p class="recipe-desc" itemprop="description">{{data.summary}}</p>
+
+                    <div class="recipe-add-data">
+                        <ul>
+                            <li><em>Préparation :</em> <meta itemprop="prepTime" content="PT25M">{{data.timePreparation}}</li>
+                            <li><em>Cuisson :</em> <meta itemprop="cookTime" content="PT60M">{{data.timeBaking}}</li>
+                            <li><em>Repos :</em> <meta itemprop="cookTime" content="PT60M">{{data.timeRest}}</li>
+                            <!--<li class="review hreview-aggregate">
+                                <em>Rating</em>
+                                <span class="rating">
+                                    <span class="average">4</span> stars - based on <span class="count">7</span>  review(s)
+                                </span>
+                            </li>-->
+                            <li>
+                                <em>Pour :</em> <span itemprop="recipeYield">{{data.nbPeople}} </span> personnes
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="ingredients-container">
+                        <h4>Ingredients</h4>
+                        <ul class="ingredients">
+
+                            <li itemprop="ingredients">
+                                <a href="http://cookingpress.purethemes.wpengine.com/tag/chicken-breast/">chicken breast</a>  - 2,  cut in bite size pieces
+                            </li>
+
+                        </ul>
+                    </div>
+                    <h4>Instructions</h4>
+                    <div itemprop="recipeInstructions" class="instructions">
+                        <p>
+                            {{data.description}}
+                        </p>
+                    </div>
+                    <div class="printfriendly pf-alignleft"><a href="http://www.printfriendly.com/print?url=http%3A%2F%2Fcookingpress.purethemes.wpengine.com%2F2012%2F02%2F26%2Ffive-spice-chicken-noodles%2F" rel="nofollow" onclick="window.print(); return false;"><img style="border:none;-webkit-box-shadow:none; box-shadow:none;" src="http://cdn.printfriendly.com/button-print-gry20.png" alt="Print Friendly"></a></div>
+                </div>
+            </section>
+        </div>
+
+        <!--<div id="post-ratings-87" class="post-ratings" itemscope="" itemtype="http://schema.org/Article" data-nonce="79c605fb32">
+            <img id="rating_87_1" src="http://cookingpress.purethemes.wpengine.com/wp-content/plugins/wp-postratings/images/stars/rating_on.gif" alt="1 Star" title="1 Star" onmouseover="current_rating(87, 1, '1 Star');" onmouseout="ratings_off(4, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;">
+            <img id="rating_87_2" src="http://cookingpress.purethemes.wpengine.com/wp-content/plugins/wp-postratings/images/stars/rating_on.gif" alt="2 Stars" title="2 Stars" onmouseover="current_rating(87, 2, '2 Stars');" onmouseout="ratings_off(4, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;">
+            <img id="rating_87_3" src="http://cookingpress.purethemes.wpengine.com/wp-content/plugins/wp-postratings/images/stars/rating_on.gif" alt="3 Stars" title="3 Stars" onmouseover="current_rating(87, 3, '3 Stars');" onmouseout="ratings_off(4, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;">
+            <img id="rating_87_4" src="http://cookingpress.purethemes.wpengine.com/wp-content/plugins/wp-postratings/images/stars/rating_on.gif" alt="4 Stars" title="4 Stars" onmouseover="current_rating(87, 4, '4 Stars');" onmouseout="ratings_off(4, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;">
+            <img id="rating_87_5" src="http://cookingpress.purethemes.wpengine.com/wp-content/plugins/wp-postratings/images/stars/rating_off.gif" alt="5 Stars" title="5 Stars" onmouseover="current_rating(87, 5, '5 Stars');" onmouseout="ratings_off(4, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;">
+            (<strong>7</strong> votes, average: <strong>4.00</strong> out of 5)<br>
+            <span class="post-ratings-text" id="ratings_87_text"></span>
+
+            <meta itemprop="name" content="{{data.name}}">
+            <meta itemprop="description" content="{{data.description}}">
+            <meta itemprop="url" content="{{$location.path()}}">
+
+            <div style="display: none;" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                <meta itemprop="bestRating" content="5">
+                <meta itemprop="ratingValue" content="4"><
+                meta itemprop="ratingCount" content="7">
+            </div>
+        </div>-->
+
+    </div><!-- .entry-content -->
+
+</article>
+
+<nav role="navigation" id="nav-below" class="post-navigation">
+    <h1 class="screen-reader-text">Post navigation</h1>
+
+    <div class="nav-previous">
+        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/chow-mein/" rel="prev">
+            <img src="http://cookingpress.purethemes.wpengine.com/files/2012/02/2-6-80x80.jpg" class="attachment-slider-thumb wp-post-image" alt="2-6" height="80" width="80">
+            <span class="meta-nav">← Previous post </span>
+            <br> Chow mein
+        </a>
+    </div>
+
+    <div class="nav-next">
+        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/coco-au-miel/" rel="next">
+            <img src="http://cookingpress.purethemes.wpengine.com/files/2012/02/muffiny-80x80.jpg" class="attachment-slider-thumb wp-post-image" alt="muffiny" height="80" width="80">
+            <span class="meta-nav">Next post link →</span> <br> Coco au Miel
+        </a>
+    </div>
+
+</nav>

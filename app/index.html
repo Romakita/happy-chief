@@ -11,15 +11,17 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800")' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="happyChiefApp">
+<body ng-app="happyChiefApp" ng-controller="AppController">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -60,11 +62,21 @@
                 <form role="search" method="get" class="search-form">
                     <span class="screen-reader-text">Search for:</span>
                     <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-                    <input class="search-field" placeholder="Search …" value="" name="s" title="Search for:" type="search">
+                    <input class="search-field" placeholder="Search …" value="" name="s" title="Search for:" type="search" ng-model="search">
                 </form>
-                <input class="search-submit" value="Search" type="submit">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <div class="switch round  small ">
+                            <input id="exampleCheckboxSwitch" type="checkbox" ng-model="havePicture">
+                            <label for="exampleCheckboxSwitch"></label>
+                        </div>
+                    </div>
+                    <div class="small-9 columns switch-label">
+                        <span>Avec photo</span>
+                    </div>
+                </div>
             </div>
-            <div id="purepress_recent-2" class="widget  purepress-recent"><h3><span>Featured recipes</span></h3><ul>
+            <div id="purepress_recent-2" class="widget  purepress-recent"><h3><span>Recettes random</span></h3><ul>
                 <!-- Post #1 -->
                 <li>
                     <div class="widget-thumb">
@@ -165,6 +177,7 @@
 <script src="scripts/directives/recipe-card.js"></script>
 <script src="scripts/controllers/recipe-list.js"></script>
 <script src="scripts/controllers/recipe.js"></script>
+<script src="scripts/directives/imageonload.js"></script>
 <!-- endbuild -->
 </body>
 </html>
