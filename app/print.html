@@ -1,0 +1,105 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800")' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+
+    <link href="styles/print.css" rel="stylesheet" type="text/css" media="all">
+
+</head>
+<body ng-app="happyChiefApp" ng-controller="PrintController">
+
+<div class="row main">
+
+    <div class="columns col1">
+        <h2>Liste de courses détachable</h2>
+        <p><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
+
+        <p><strong>{{data.title}}</strong></p>
+
+        <ul class="ingredients" ng-repeat="ingredients in shopGroups">
+
+            <li class="group" ng-show="ingredients[0].shopGroup">{{ingredients[0].shopGroup}}</li>
+
+            <li itemprop="ingredients" ng-repeat="ingredient in ingredients">
+                {{ingredient.label}}  - {{ingredient.qte}} {{ingredient.unit}}
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="columns col2">
+        <div class="thumbnail">
+            <img itemprop="image" class="recipe-image" src="{{data.picture || 'images/no-picture.png'}}">
+        </div>
+        <h2>Les ingrédients</h2>
+        <p><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
+
+        <ul class="ingredients" ng-repeat="ingredients in steps">
+
+            <li class="group" ng-show="ingredients[0].step">{{ingredients[0].step}}</li>
+
+            <li itemprop="ingredients" ng-repeat="ingredient in ingredients">
+                {{ingredient.label}}  - {{ingredient.qte}} {{ingredient.unit}}
+            </li>
+
+        </ul>
+
+        <div class="chief-tip" ng-bind-html="data.chiefTip">
+
+        </div>
+
+    </div>
+
+    <div class="columns col3">
+        <h1>{{data.title}}</h1>
+        <p class="summary">{{data.summary}}</p>
+
+        <div class="row times">
+            <div class="columns col1">
+                Préparation : {{data.timePreparation}}
+            </div>
+            <div class="columns col2">
+                Cuisson : {{data.timeBaking}}
+            </div>
+            <div class="columns col3">
+                Repos : {{data.timeRest}}
+            </div>
+            <div class="clearfloat"></div>
+        </div>
+
+
+        <h2>Description de la recette</h2>
+
+        <p class="description" ng-bind-html="data.description">
+
+        </p>
+    </div>
+
+    <div class="clearfloat"></div>
+</div>
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<script src="bower_components/jquery/dist/jqery.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="scripts/controllers/print.js"></script>
+<script src="scripts/services/recipe.js"></script>
+
+</body>
+</html>

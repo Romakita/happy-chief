@@ -27,7 +27,13 @@ angular
             });
     })
 
-    .controller('AppController', function ($rootScope, $scope) {
+    .controller('AppController', function ($rootScope, $scope, Recipe) {
+
+        $scope.randomRecipes = [];
+
+        Recipe.randomList(8).success(function(data){
+            $scope.randomRecipes = data;
+        });
 
         $scope.$watch('search', function(val){
 

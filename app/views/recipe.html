@@ -48,21 +48,35 @@
 
                     <div class="ingredients-container">
                         <h4>Ingredients</h4>
-                        <ul class="ingredients">
+                        <ul class="ingredients" ng-repeat="ingredients in steps">
 
-                            <li itemprop="ingredients">
-                                <a href="http://cookingpress.purethemes.wpengine.com/tag/chicken-breast/">chicken breast</a>  - 2,  cut in bite size pieces
+                            <li class="step"><strong>{{ingredients[0].step}}</strong></li>
+
+                            <li itemprop="ingredients" ng-repeat="ingredient in ingredients">
+                                <a href="#/recipes/ingredients/{{ingredient.label}}">{{ingredient.label}}</a>  - {{ingredient.qte}} {{ingredient.unit}}
                             </li>
 
                         </ul>
                     </div>
                     <h4>Instructions</h4>
                     <div itemprop="recipeInstructions" class="instructions">
-                        <p>
-                            {{data.description}}
+                        <p ng-bind-html="data.description">
+
                         </p>
                     </div>
-                    <div class="printfriendly pf-alignleft"><a href="http://www.printfriendly.com/print?url=http%3A%2F%2Fcookingpress.purethemes.wpengine.com%2F2012%2F02%2F26%2Ffive-spice-chicken-noodles%2F" rel="nofollow" onclick="window.print(); return false;"><img style="border:none;-webkit-box-shadow:none; box-shadow:none;" src="http://cdn.printfriendly.com/button-print-gry20.png" alt="Print Friendly"></a></div>
+
+                    <h4>Conseil du chef</h4>
+                    <div itemprop="recipeInstructions" class="">
+                        <p ng-bind-html="data.chiefTip">
+
+                        </p>
+                    </div>
+
+                    <div class="printfriendly pf-alignleft">
+                        <a href="print.html#/{{data._id}}" rel="nofollow" target="_blank">
+                            <img style="border:none;-webkit-box-shadow:none; box-shadow:none;" src="http://cdn.printfriendly.com/button-print-gry20.png" alt="Imprimer">
+                        </a>
+                    </div>
                 </div>
             </section>
         </div>

@@ -42,6 +42,17 @@ angular.module('happyChiefApp')
              * @param options
              * @returns {HttpPromise}
              */
+            randomList:function(nb){
+                return $http({
+                    url: '/recipes/random/'+ (nb || 5),
+                    method: "GET"
+                });
+            },
+            /**
+             * Récupère la liste des skillcenters.
+             * @param options
+             * @returns {HttpPromise}
+             */
             getList:function(options){
                 return $http({
                     url: '/recipes',

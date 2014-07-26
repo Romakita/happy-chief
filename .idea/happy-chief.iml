@@ -16,6 +16,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="happy-chief node_modules" level="project" />
+    <orderEntry type="library" name="happy-chief-recettes node_modules" level="project" />
+    <orderEntry type="library" name="sass-stdlib" level="application" />
   </component>
 </module>
 

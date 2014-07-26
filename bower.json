@@ -10,8 +10,7 @@
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
     "jquery": "~2.1.1",
-    "font-awesome": "~4.1.0",
-    "jquery.lazyload": "~1.9.3"
+    "font-awesome": "~4.1.0"
   },
   "devDependencies": {
     "foundation": "~5.3.1",

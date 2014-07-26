@@ -58,7 +58,7 @@
 
         <div id="secondary" class="small-3 large-3 columns sidebar widget-area">
             <div id="search-2" class="widget  widget_search">
-                <h3><span>Search</span></h3>
+                <h3><span>Rechercher</span></h3>
                 <form role="search" method="get" class="search-form">
                     <span class="screen-reader-text">Search for:</span>
                     <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -76,63 +76,24 @@
                     </div>
                 </div>
             </div>
-            <div id="purepress_recent-2" class="widget  purepress-recent"><h3><span>Recettes random</span></h3><ul>
-                <!-- Post #1 -->
-                <li>
-                    <div class="widget-thumb">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/"><img src="http://cookingpress.purethemes.wpengine.com/files/2012/02/front-80x80.jpg" class="attachment-slider-thumb wp-post-image" alt="Daleji Bulgogi" height="80" width="80"></a>
-                    </div>
+            <div id="purepress_recent-2" class="widget  purepress-recent">
+                <h3><span>Recettes random</span></h3>
+                <ul>
+                    <!-- Post #1 -->
+                    <li ng-repeat="item in randomRecipes">
+                        <div class="widget-thumb">
+                            <a href="#/recipes/{{item._id}}">
+                                <img src="{{item.picture}}" class="attachment-slider-thumb wp-post-image" alt="{{item.title}}">
+                            </a>
+                        </div>
 
-                    <div class="widget-text">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/">Daeji Bulgogi</a>
-                        <span>February 29, 2012</span>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-
-
-                <!-- Post #1 -->
-                <li>
-                    <div class="widget-thumb">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/vegetable-soba-noodles/"><img src="http://cookingpress.purethemes.wpengine.com/files/2012/02/IMG_6933a-80x80.jpg" class="attachment-slider-thumb wp-post-image" alt="IMG_6933a" height="80" width="80"></a>
-                    </div>
-
-                    <div class="widget-text">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/vegetable-soba-noodles/">Vegetable Soba noodles</a>
-                        <span>February 26, 2012</span>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-
-
-                <!-- Post #1 -->
-                <li>
-                    <div class="widget-thumb">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/five-spice-chicken-noodles/"><img src="http://cookingpress.purethemes.wpengine.com/files/2012/02/3-6-80x80.jpg" class="attachment-slider-thumb wp-post-image" alt="3-6" height="80" width="80"></a>
-                    </div>
-
-                    <div class="widget-text">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/five-spice-chicken-noodles/">Five spice chicken noodles</a>
-                        <span>February 26, 2012</span>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-
-
-                <!-- Post #1 -->
-                <li>
-                    <div class="widget-thumb">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/chow-mein/"><img src="http://cookingpress.purethemes.wpengine.com/files/2012/02/2-6-80x80.jpg" class="attachment-slider-thumb wp-post-image" alt="2-6" height="80" width="80"></a>
-                    </div>
-
-                    <div class="widget-text">
-                        <a href="http://cookingpress.purethemes.wpengine.com/2012/02/26/chow-mein/">Chow mein</a>
-                        <span>February 26, 2012</span>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-
-            </ul></div>
+                        <div class="widget-text">
+                            <a href="#/recipes/{{item._id}}">{{item.title}}</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div id="primary" class="small-3 large-8  columns" ng-view="">
@@ -158,7 +119,6 @@
 <![endif]-->
 
 <!-- build:js scripts/vendor.js -->
-<script src="bower_components/jquery/dist/jqery.min.js"></script>
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>

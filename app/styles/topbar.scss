@@ -162,6 +162,7 @@ input[type="search"] {
   list-style: none outside none;
   margin: 0px;
   padding: 0px;
+  width:120%;
 }
 .widget.purepress-recent ul li {
   overflow: hidden;
@@ -183,8 +184,8 @@ input[type="search"] {
 }
 
 .widget.purepress-recent ul .widget-thumb img {
-  max-width: 60px;
-  height: auto;
+  max-width: 85px;
+  max-height: 85px;
   border: 1px solid #EEE;
   padding: 3px;
   transition: all 1s ease-out 0s;
