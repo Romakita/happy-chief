@@ -62,9 +62,10 @@
                     </div>
                     <h4>Instructions</h4>
                     <div itemprop="recipeInstructions" class="instructions">
-                        <p ng-bind-html="data.description">
+                        <p ng-bind-html="sanitize(data.description)">
 
                         </p>
+
                     </div>
 
                     <h4>Conseil du chef</h4>

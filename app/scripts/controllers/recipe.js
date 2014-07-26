@@ -5,6 +5,10 @@ angular.module('happyChiefApp')
 
         $scope.steps = {};
 
+        $scope.sanitize = function(str){
+            return str.replace("<br />", "").replace(/<br \/>$/, '');
+        };
+
         if($routeParams.id){
             Recipe.get($routeParams.id).success(function(data){
                 $scope.data = data;
