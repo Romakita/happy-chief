@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Happy chief - Impression recette</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800")' rel='stylesheet' type='text/css'>
@@ -21,9 +21,9 @@
 
     <div class="columns col1">
         <h2>Liste de courses détachable</h2>
-        <p><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
+        <p class="title"><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
 
-        <p><strong>{{data.title}}</strong></p>
+        <p class="title"><strong>{{data.title}}</strong></p>
 
         <ul class="ingredients" ng-repeat="ingredients in shopGroups">
 
@@ -41,11 +41,11 @@
             <img itemprop="image" class="recipe-image" src="{{data.picture || 'images/no-picture.png'}}">
         </div>
         <h2>Les ingrédients</h2>
-        <p><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
+        <p class="qte-title"><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
 
         <ul class="ingredients" ng-repeat="ingredients in steps">
 
-            <li class="group" ng-show="ingredients[0].step">{{ingredients[0].step}}</li>
+            <li class="step" ng-show="ingredients[0].step">{{ingredients[0].step}}</li>
 
             <li itemprop="ingredients" ng-repeat="ingredient in ingredients">
                 {{ingredient.label}}  - {{ingredient.qte}} {{ingredient.unit}}
@@ -53,8 +53,9 @@
 
         </ul>
 
-        <div class="chief-tip" ng-bind-html="data.chiefTip">
-
+        <div class="chief-tip">
+            <h2>Le + du chef</h2>
+            <p ng-bind-html="data.chiefTip"></p>
         </div>
 
     </div>
