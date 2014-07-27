@@ -1,0 +1,38 @@
+<article style="" class="post-836 post type-post status-publish format-standard hentry post" id="post-836" ng-class="item.picture != '' ? 'has-post-thumbnail' : '' ">
+
+    <div class="post-thumbnail" ng-show="item.picture">
+        <a href="{{href + '/' + item._id}}" title="{{item.title}}" rel="bookmark">
+            <img src="{{item.picture.replace('-c', '-e')}}" class="attachment-post-thumbnail wp-post-image" alt="{{item.title}}" height="215" width="360" imageonload>
+        </a>
+    </div>
+
+    <a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/" class="published-time" title="8:27 pm" rel="bookmark">
+        <span class="entry-date">non classé</span>
+    </a>
+
+    <h2 class="entry-title">
+        <a href="{{href + '/' + item._id}}" title="{{item.title}}" rel="bookmark">{{item.title.replace('Recette de ', '')}}</a>
+    </h2>
+
+    <div class="entry-content" ng-hide="item.picture">
+        <a href="{{href + '/' + item._id}}" title="{{item.title}}" rel="bookmark">{{item.summary}}</a>
+    </div>
+
+    <footer>
+        <ul class="post-meta">
+            <!--<li><a href="http://cookingpress.purethemes.wpengine.com/2012/02/29/daeji-bulgogi/#comments" class="glyphicons comments" title="Comment on Daeji Bulgogi"><span>6</span> </a></li>-->
+
+            <li class="recipe-time">
+                <span class="fa fa-dashboard"></span>
+                <span tooltip="Préparation" tooltip-trigger="mouseenter" tooltip-popup-delay="500" tooltip-placement="top">{{item.timePreparation}}</span>
+                <span tooltip="Cuisson" tooltip-trigger="mouseenter" tooltip-popup-delay="500" tooltip-placement="bottom" ng-hide="item.timeBaking == '0mn'"> (+{{item.timeBaking}})</span>
+            </li>
+            <li class="recipe-servings"><span class="fa fa-glass" href="#"></span>{{item.nbPeople}} pers.</span></li>
+            <!--<li class="recipe-level">
+                <span class="fa fa-signal" href="#"></span>
+                <em>Niveau :</em> Facile
+            </li>-->
+        </ul>
+    </footer>
+
+</article>

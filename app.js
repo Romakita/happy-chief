@@ -1,4 +1,3 @@
-
 'use strict';
 
 var path = require('path');
@@ -6,41 +5,22 @@ var connect = require('connect');
 var http = require('http');
 var https = require('https');
 var open = require('open');
-
-var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
-};
+var serveStatic = require('serve-static');
 
 var options = {
     protocol:       'http',
     port:           80,
     hostname:       'localhost',
-    base:           '<%= yeoman.dist %>',
+    base:           'dist',
     directory:      null,
     keepalive:      false,
     debug:          false,
-    open:           false,
-    middleware:     function(connect){
-        return [
-            mountFolder(connect, 'dist'),
-            require('./server.js')
-        ]
-    }
+    open:           false
 };
 
 if (options.protocol !== 'http' && options.protocol !== 'https') {
     console.log('protocol option must be \'http\' or \'https\'');
 }
-
-// Connect requires the base path to be absolute.
-if (Array.isArray(options.base)) {
-    options.base = options.base.map(function(base) {
-        return path.resolve(base);
-    });
-} else {
-    options.base = path.resolve(options.base);
-}
-
 // Connect will listen to all interfaces if hostname is null.
 if (options.hostname === '*') {
     options.hostname = null;
@@ -56,7 +36,11 @@ var middleware = options.middleware ? options.middleware.call(null, connect, opt
 // Start server.
 var keepAlive = options.keepalive;
 
-var app = connect.apply(null, middleware);
+var app = connect();
+
+app.use(serveStatic(options.base));
+app.use(require('./server.js'));
+
 var server = null;
 
 if (options.protocol === 'https') {

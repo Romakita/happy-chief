@@ -1,0 +1,29 @@
+<div class="recipe-cards">
+
+    <!-- toolbar -->
+
+    <div class="card-navbar" ng-hide="totalPages == 1">
+
+        <span class="lbl-pages">Page {{currentPage}} sur {{totalPages}}</span>
+        <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+    </div>
+
+    <div class="horizontal-scroll grid">
+        <div class="row collapse">
+            <div class="small-6 large-6 columns">
+                <card ng-repeat="item in list1" data-href="{{href}}" data-item="item"></card>
+            </div>
+            <div class="small-6 large-6 columns">
+                <card ng-repeat="item in list2" data-href="{{href}}" data-item="item"></card>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-navbar bottom" ng-hide="totalPages == 1">
+
+        <span class="lbl-pages">Page {{currentPage}} sur {{totalPages}}</span>
+        <pagination on-select-page="onSelectPage(page)" ng-show="showPagination"  items-per-page="itemsPerPage" rotate="false" max-size="maxSize" boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+    </div>
+</div>

@@ -1,0 +1,139 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: Arial, Helvetica;
+    font-size:13px;
+}
+
+.clearfloat{
+    clear:both;
+}
+h1{
+    font-size: 28px;
+    font-weight: normal;
+    color: #008CBA;
+    margin-bottom: 10px;
+    font-family: lobster;
+}
+h2{
+    font-size:16px;
+    color:#366097;
+    font-weight:700;
+}
+
+ul, li{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.row.main{
+    width:1155px;
+    margin:8px;
+}
+
+.row > .columns{
+    float:left;
+    width:33%
+}
+
+.row.main > .col1{
+    width:268px;
+    padding-right:20px;
+    border-right:2px dotted #008CBA;
+    background-image:url('../images/ciseau_imprimer.png');
+    background-position: right 10px;
+    background-repeat:no-repeat;
+    margin-right:15px;
+}
+
+.row.main > .col2{
+    border:1px solid #D2E0E6;
+    border-radius:5px;
+    margin:5px;
+    width:210px;
+    margin-right:20px;
+}
+
+.row.main > .col2 > *,
+.row.main > .col2 > ul > li{
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.row.main > .col2 > ul{
+    margin-right:0px;
+    margin-left:0px;
+}
+.row.main > .col2 img{
+    width:200px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+p.title{
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+p.qte-title{
+    margin-bottom:15px;
+}
+
+ul.ingredients{
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+ul.ingredients .group{
+    font-weight:bold;
+    color:#366097;
+    font-size:13px;
+    margin-bottom:5px;
+}
+.row.main > .col2 > ul > li.step {
+    background:#D2E0E6;
+    margin-left:0px;
+    margin-right:0px;
+    padding:2px 5px;
+    margin-bottom:5px;
+    color:#366097;
+    font-weight:bold;
+}
+
+.row.main > .col2 .chief-tip{
+    background:#ddffdd;
+    font-size:12px;
+    margin:0;
+    padding:5px;
+}
+.row.main > .col2 .chief-tip h2 {
+    color:#89C331;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.row.main > .col3{
+    width:515px;
+}
+
+
+.row.main > .col3 .summary{
+    font-size:14px;
+    margin-bottom:10px;
+}
+.row.times{
+    margin-bottom:30px;
+    margin-left:-5px;
+}
+.row.times > .columns{
+    width:155px;
+    margin-left:5px;
+    margin-right:5px;
+    text-align: center;
+    color:white;
+    font-weight:bold;
+    background:#008CBA;
+    padding:3px;
+}
