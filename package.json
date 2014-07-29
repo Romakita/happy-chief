@@ -2,6 +2,7 @@
   "name": "happychief",
   "version": "0.1.0",
   "dependencies": {
+    "MD5": "^1.2.1",
     "body-parser": "^1.4.3",
     "express": "^4.6.1",
     "htmlparser2": "^3.7.3",
