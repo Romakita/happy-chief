@@ -10,9 +10,13 @@ angular
     ])
     .config(function ($routeProvider) {
         $routeProvider
-            .when('/', {
-                templateUrl: 'views/recipes-list.html',
-                controller: 'RecipeListCtrl'
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl'
+            })
+            .when('/signup', {
+                templateUrl: 'views/signup.html',
+                controller: 'SignupCtrl'
             })
             .when('/recipes/:id', {
               templateUrl: 'views/recipe.html',
@@ -22,9 +26,9 @@ angular
                 templateUrl: 'views/recipes-list.html',
                 controller: 'RecipeListCtrl'
             })
-            .when('/login', {
-              templateUrl: 'views/login.html',
-              controller: 'LoginCtrl'
+            .when('/', {
+                templateUrl: 'views/recipes-list.html',
+                controller: 'RecipeListCtrl'
             })
             .otherwise({
                 redirectTo: '/'

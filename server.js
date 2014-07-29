@@ -3,19 +3,31 @@
  */
 'use strict';
 
-var express =       require('express'),
-    bodyParser =    require('body-parser');
+var express =       require('express');
+var passport =      require('passport');
+var flash =         require('connect-flash');
+var morgan =        require('morgan');
+var cookieParser =  require('cookie-parser');
+var bodyParser =    require('body-parser');
+var session =       require('express-session');
 
 var app =  module.exports = express();
+app.use(morgan('dev'));                             // log every request to the console
+app.use(cookieParser());                            // read cookies (needed for auth)
 app.use(bodyParser.json());                         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended:true}));    // to support URL-encoded bodies
 
-require('./lib/db').initialize(app)
-    .then(function(){
+app.use(session({
+    secret: 'secretkeyhappychief77', maxAge: new Date(Date.now() + 3600000),
+    resave:true,
+    saveUninitialized:true
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session());    // persistent login sessions
+app.use(flash());               // use connect-flash for flash messages stored in session
 
-        require('./lib/recipe').initialize(app);
-        require('./lib/category').initialize(app);
-
-    });
-
-
+require('./conf/passport')(passport); // pass passport for configuration
+require('./lib/db').initialize(app);
+require('./lib/recipe').initialize(app, passport);
+require('./lib/category').initialize(app, passport);
+require('./lib/user').initialize(app, passport);
