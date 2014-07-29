@@ -14,7 +14,7 @@ require('./lib/db').initialize(app)
     .then(function(){
 
         require('./lib/recipe').initialize(app);
-
+        require('./lib/category').initialize(app);
 
     });
 

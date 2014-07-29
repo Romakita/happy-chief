@@ -11,9 +11,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800")' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-
+    <!-- build:css({.tmp,app}) styles/print.css -->
     <link href="styles/print.css" rel="stylesheet" type="text/css" media="all">
-
+    <!-- endbuild -->
 </head>
 <body ng-app="happyChiefApp" ng-controller="PrintController">
 
@@ -93,14 +93,20 @@
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
 
-<script src="bower_components/jquery/dist/jqery.min.js"></script>
+<!-- build:js scripts/vendor-print.js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts-print.js -->
 <script src="scripts/controllers/print.js"></script>
 <script src="scripts/services/recipe.js"></script>
+<!-- endbuild -->
+
 
 </body>
 </html>

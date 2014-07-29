@@ -108,6 +108,7 @@ module.exports = function (grunt) {
                     livereload: false,
                     middleware: function(connect) {
                         return [
+                            connect.static(config.dist),
                             require('./server.js')
                         ];
                     }
@@ -200,7 +201,7 @@ module.exports = function (grunt) {
         bowerInstall: {
             app: {
                 src: ['<%= config.app %>/index.html'],
-                exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
+                exclude: []
             },
             sass: {
                 src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']
@@ -215,7 +216,6 @@ module.exports = function (grunt) {
                         '<%= config.dist %>/scripts/{,*/}*.js',
                         '<%= config.dist %>/styles/{,*/}*.css',
                         '<%= config.dist %>/images/{,*/}*.*',
-                        '<%= config.dist %>/styles/fonts/{,*/}*.*',
                         '<%= config.dist %>/*.{ico,png}'
                     ]
                 }
@@ -229,7 +229,10 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: '<%= config.app %>/index.html'
+            html: [
+                '<%= config.app %>/index.html',
+                '<%= config.app %>/print.html'
+            ]
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
@@ -338,14 +341,16 @@ module.exports = function (grunt) {
                         'images/{,*/}*.webp',
                         '{,*/}*.html',
                         'views/{,*/}*.html',
-                        'styles/fonts/{,*/}*.*'
+                        'styles/print.css'
                     ]
                 }, {
                     expand: true,
                     dot: true,
-                    cwd: '.',
-                    src: ['bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*.*'],
-                    dest: '<%= config.dist %>'
+                    cwd: '<%= config.app %>/bower_components/font-awesome/fonts/',
+                    src: [
+                        '*.*'
+                    ],
+                    dest: '<%= config.dist %>/fonts'
                 }]
             },
             styles: {
@@ -436,7 +441,7 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
-        'rev',
+       // 'rev',
         'usemin',
         'htmlmin'
     ]);
