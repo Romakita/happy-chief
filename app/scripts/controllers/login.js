@@ -3,7 +3,8 @@
 angular.module('happyChiefApp')
     .controller('LoginCtrl', function ($scope, AuthService) {
 
-        $scope.credentials = {mail:'', password:''};
+        $scope.credentials = {};
+
 
         //$scope.storeLogin = false;
         //restore account info
@@ -14,8 +15,11 @@ angular.module('happyChiefApp')
         }*/
 
         $scope.login = function() {
+            delete $scope.messageError;
 
-            console.log($scope.credentials)
+            $scope.mail = $('#credential-mail').val();
+            $scope.password = $('#credential-password').val();
+
             if($scope.credentials.mail == '' || $scope.credentials.password == ''){
                 $scope.messageError = 'Veuillez saisir votre e-mail et votre mot de passe pour vous connecter';
                 return;
@@ -32,6 +36,7 @@ angular.module('happyChiefApp')
                 //$location.path('admin');
 
             }, function () {
+                $scope.messageError = 'Votre e-mail et mot de passe ne correspond à aucun compte utilisateur';
                 //$rootScope.account = null;
                 //$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
                 //$scope.messageError = "Erreur lors de l'authentification";

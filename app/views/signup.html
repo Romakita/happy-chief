@@ -1,1 +1,27 @@
-<p>This is the signup view.</p>
+<!-- LOGIN FORM -->
+<form action="/signup" method="post">
+
+    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+    <div data-alert class="alert-box alert radius" ng-hide="!messageError">{{messageError}}</div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <label>E-mail</label>
+            <input autocomplete="off" type="email" id="credential-mail" class="credentials input-mail" name="mail" ng-model="credentials.mail" value="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <label>Mot de passe</label>
+            <input autocomplete="off" type="password" id="credential-password" class="credentials input-password" name="password" ng-model="credentials.password" value="">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+</form>
+
+<hr>
+
+<p>Already have an account? <a href="#/login">Login</a></p>
+<p>Or go <a href="/">home</a>.</p>

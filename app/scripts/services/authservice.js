@@ -14,13 +14,11 @@ angular.module('happyChiefApp')
                     .post('/login', credentials)
                     .success(function (data, status, headers, config) {
 
-                        console.log(data);
-
                         //session.create(data);
                     })
                     .error(function (data, status, headers, config) {
 
-                        console.log(data);
+
                         //session.destroy();
                     });
             },
