@@ -49,6 +49,12 @@
     "time-grunt": "~0.3.1",
     "jshint-stylish": "~0.1.5"
   },
+
+    "main": "app.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/romakita/happy-chief.git"
+    },
   "engines": {
     "node": ">=0.10.0"
   },

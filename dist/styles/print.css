@@ -46,6 +46,7 @@ ul, li{
     background-position: right 10px;
     background-repeat:no-repeat;
     margin-right:15px;
+    min-height:540px;
 }
 
 .row.main > .col2{
