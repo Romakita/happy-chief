@@ -8,7 +8,7 @@ var serveStatic = require('serve-static');
 
 var options = {
     protocol:       'http',
-    port:           80,
+    port:           process.env.PORT || 5000,
     hostname:       'localhost',
     base:           'dist',
     debug:          false
