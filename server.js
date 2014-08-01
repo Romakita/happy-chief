@@ -9,7 +9,7 @@ var flash =         require('connect-flash');
 var morgan =        require('morgan');
 var cookieParser =  require('cookie-parser');
 var bodyParser =    require('body-parser');
-var session =       require('express-session');
+var expressJwt =       require('express-jwt');
 
 var app =  module.exports = express();
 app.use(morgan('dev'));                             // log every request to the console
@@ -17,11 +17,13 @@ app.use(cookieParser());                            // read cookies (needed for 
 app.use(bodyParser.json());                         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended:true}));    // to support URL-encoded bodies
 
-app.use(session({
-    secret: 'secretkeyhappychief77', maxAge: new Date(Date.now() + 3600000),
+app.use('/admin', expressJwt({
+    secret: 'secretkeyhappychief77',
+    maxAge: new Date(Date.now() + 3600000),
     resave:true,
     saveUninitialized:true
 })); // session secret
+
 app.use(passport.initialize());
 app.use(passport.session());    // persistent login sessions
 app.use(flash());               // use connect-flash for flash messages stored in session

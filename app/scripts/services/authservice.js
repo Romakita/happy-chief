@@ -33,10 +33,11 @@ angular.module('happyChiefApp')
                     .post('/signup', credentials)
                     .success(function (data, status, headers, config) {
 
-
                         //session.create(data);
                     })
                     .error(function (data, status, headers, config) {
+
+
                         //session.destroy();
                     });
             },
