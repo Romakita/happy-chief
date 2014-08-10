@@ -9,7 +9,6 @@ var serveStatic = require('serve-static');
 var options = {
     protocol:       'http',
     port:           process.env.PORT || 5000,
-    hostname:       '127.0.0.1',
     base:           'dist',
     debug:          false
 };
@@ -41,7 +40,7 @@ if (options.protocol === 'https') {
 }
 
 server
-    .listen(options.port, options.hostname)
+    .listen(options.port)
     .on('listening', function() {
         var address = server.address();
         console.log('Started connect web server on ' + (address.address || 'localhost') + ':' + address.port + '.');
