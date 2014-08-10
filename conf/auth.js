@@ -3,7 +3,8 @@ module.exports = {
     'facebookAuth' : {
         'clientID':         '144750669028868', // your App ID
         'clientSecret':     'c93db8bd267830f1fced7eecbb0bc716', // your App Secret
-        'callbackURL':      'http://happy-chief.herokuapp.com/auth/facebook/callback'
+        'callbackURL':      'http://happy-chief.herokuapp.com/auth/facebook/callback',
+        'callbackURL':      'http://localhost:9000/auth/facebook/callback'
     },
 
     'twitterAuth' : {

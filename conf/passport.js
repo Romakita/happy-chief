@@ -141,7 +141,7 @@ module.exports = function(passport) {
             process.nextTick(function() {
 
                 // find the user in the database based on their facebook id
-                User.findOne({'id': id, 'type': 'facebook'}, function(err, user) {
+                User.findOne({'id': profile.id, 'type': 'facebook'}, function(err, user) {
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
 
