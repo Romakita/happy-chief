@@ -138,3 +138,9 @@ ul.ingredients .group{
     background:#008CBA;
     padding:3px;
 }
+
+@media print {
+    .row.main{
+        transform: rotate(90deg) translate(290px);
+    }
+}

@@ -53,7 +53,7 @@ module.exports = function(passport) {
 
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
-                User.findOne({ 'local.mail' :  email }, function(err, user) {
+                User.findOne({ 'email' :  email }, function(err, user) {
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -68,8 +68,9 @@ module.exports = function(passport) {
                         var newUser = new User();
 
                         // set the user's local credentials
-                        newUser.local.mail =     email;
-                        newUser.local.password = User.generateHash(password);
+                        newUser.login = newUser.email = email;
+                        newUser.password =  User.generateHash(password);
+                        newUser.name =      req.body.firstName + ' ' + req.body.name;
 
                         // save the user
                         newUser.save(function(err) {
@@ -93,15 +94,15 @@ module.exports = function(passport) {
 
     passport.use('local-login', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
-            usernameField : 'mail',
-            passwordField : 'password',
-            passReqToCallback : true // allows us to pass back the entire request to the callback
+            usernameField:     'email',
+            passwordField:     'password',
+            passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, email, password, done) { // callback with email and password from our form
 
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
-            User.findOne({ 'local.mail' :  email }, function(err, user) {
+            User.findOne({ 'login' :  email }, function(err, user) {
                 // if there are any errors, return the error before anything else
                 if (err) {
                     return done(err);
@@ -127,9 +128,9 @@ module.exports = function(passport) {
     passport.use(new FacebookStrategy({
 
             // pull in our app id and secret from our auth.js file
-            clientID        : configAuth.facebookAuth.clientID,
-            clientSecret    : configAuth.facebookAuth.clientSecret,
-            callbackURL     : configAuth.facebookAuth.callbackURL
+            clientID:     configAuth.facebookAuth.clientID,
+            clientSecret: configAuth.facebookAuth.clientSecret,
+            callbackURL:  configAuth.facebookAuth.callbackURL
 
         },
 
@@ -138,9 +139,9 @@ module.exports = function(passport) {
 
             // asynchronous
             process.nextTick(function() {
-                console.log('passport-----------------------------')
+
                 // find the user in the database based on their facebook id
-                User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+                User.findOne({'id': id, 'type': 'facebook'}, function(err, user) {
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
 
@@ -152,13 +153,14 @@ module.exports = function(passport) {
                     } else {
 
                         // if there is no user found with that facebook id, create them
-                        var newUser            = new User();
+                        var newUser = new User();
 
                         // set all of the facebook information in our user model
-                        newUser.facebook.id    = profile.id; // set the users facebook id
-                        newUser.facebook.token = token; // we will save the token that facebook provides to the user
-                        newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                        newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+                        newUser.type =  'facebook';
+                        newUser.id =    profile.id; // set the users facebook id
+                        newUser.token = token; // we will save the token that facebook provides to the user
+                        newUser.name =  profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+                        newUser.login = newUser.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
 
                         // save our user to the database
                         newUser.save(function(err) {
@@ -180,9 +182,9 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use(new TwitterStrategy({
 
-            consumerKey     : configAuth.twitterAuth.consumerKey,
-            consumerSecret  : configAuth.twitterAuth.consumerSecret,
-            callbackURL     : configAuth.twitterAuth.callbackURL
+            consumerKey:    configAuth.twitterAuth.consumerKey,
+            consumerSecret: configAuth.twitterAuth.consumerSecret,
+            callbackURL:    configAuth.twitterAuth.callbackURL
 
         },
         function(token, tokenSecret, profile, done) {
@@ -191,7 +193,7 @@ module.exports = function(passport) {
             // User.findOne won't fire until we have all our data back from Twitter
             process.nextTick(function() {
 
-                User.findOne({ 'twitter.id' : profile.id }, function(err, user) {
+                User.findOne({'id' : profile.id, 'type': 'twitter'}, function(err, user) {
 
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
@@ -203,13 +205,14 @@ module.exports = function(passport) {
                         return done(null, user); // user found, return that user
                     } else {
                         // if there is no user, create them
-                        var newUser                 = new User();
+                        var newUser = new User();
 
                         // set all of the user data that we need
-                        newUser.twitter.id          = profile.id;
-                        newUser.twitter.token       = token;
-                        newUser.twitter.username    = profile.username;
-                        newUser.twitter.displayName = profile.displayName;
+                        newUser.type =          'twitter';
+                        newUser.id =            profile.id;
+                        newUser.token =         token;
+                        newUser.login =         profile.username;
+                        newUser.displayName =   profile.displayName;
 
                         // save our user into the database
                         newUser.save(function(err) {
@@ -229,9 +232,9 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use(new GoogleStrategy({
 
-            clientID        : configAuth.googleAuth.clientID,
-            clientSecret    : configAuth.googleAuth.clientSecret,
-            callbackURL     : configAuth.googleAuth.callbackURL
+            clientID:       configAuth.googleAuth.clientID,
+            clientSecret:   configAuth.googleAuth.clientSecret,
+            callbackURL:    configAuth.googleAuth.callbackURL
 
         },
         function(token, refreshToken, profile, done) {
@@ -241,7 +244,7 @@ module.exports = function(passport) {
             process.nextTick(function() {
 
                 // try to find the user based on their google id
-                User.findOne({ 'google.id' : profile.id }, function(err, user) {
+                User.findOne({ 'id' : profile.id, 'type': 'google'}, function(err, user) {
                     if (err)
                         return done(err);
 
@@ -251,13 +254,15 @@ module.exports = function(passport) {
                         return done(null, user);
                     } else {
                         // if the user isnt in our database, create a new user
-                        var newUser          = new User();
+                        var newUser = new User();
 
                         // set all of the relevant information
-                        newUser.google.id    = profile.id;
-                        newUser.google.token = token;
-                        newUser.google.name  = profile.displayName;
-                        newUser.google.email = profile.emails[0].value; // pull the first email
+                        newUser.type =      'google';
+                        newUser.id =        profile.id;
+                        newUser.token =     token;
+                        newUser.name =      profile.displayName;
+
+                        newUser.login = newUser.email = profile.emails[0].value; // pull the first email
 
                         // save the user
                         newUser.save(function(err) {
