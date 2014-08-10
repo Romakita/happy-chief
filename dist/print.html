@@ -1,4 +1,100 @@
-<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js><!--<![endif]--><head><meta charset=utf-8><title>Happy chief - Impression recette</title><meta name=description content=""><meta name=viewport content="width=device-width"><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&quot;)" rel=stylesheet type=text/css><link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel=stylesheet type=text/css><link href="http://fonts.googleapis.com/css?family=Satisfy" rel=stylesheet type=text/css><link rel=stylesheet href=styles/print.css media=all><body ng-app=happyChiefApp ng-controller=PrintController><div class="row main"><div class="columns col1"><h2>Liste de courses détachable</h2><p class=title><em>Quantité pour {{data.nbPeople}} personne(s)</em></p><p class=title><strong>{{data.title}}</strong></p><ul class=ingredients ng-repeat="ingredients in shopGroups"><li class=group ng-show=ingredients[0].shopGroup>{{ingredients[0].shopGroup}}</li><li itemprop=ingredients ng-repeat="ingredient in ingredients">{{ingredient.label}} - {{ingredient.qte}} {{ingredient.unit}}</li></ul></div><div class="columns col2"><div class=thumbnail><img itemprop=image class=recipe-image src="{{data.picture || 'images/no-picture.png'}}"></div><h2>Les ingrédients</h2><p class=qte-title><em>Quantité pour {{data.nbPeople}} personne(s)</em></p><ul class=ingredients ng-repeat="ingredients in steps"><li class=step ng-show=ingredients[0].step>{{ingredients[0].step}}</li><li itemprop=ingredients ng-repeat="ingredient in ingredients">{{ingredient.label}} - {{ingredient.qte}} {{ingredient.unit}}</li></ul><div class=chief-tip><h2>Le + du chef</h2><p ng-bind-html=data.chiefTip></p></div></div><div class="columns col3"><h1>{{data.title}}</h1><p class=summary>{{data.summary}}</p><div class="row times"><div class="columns col1">Préparation : {{data.timePreparation}}</div><div class="columns col2">Cuisson : {{data.timeBaking}}</div><div class="columns col3">Repos : {{data.timeRest}}</div><div class=clearfloat></div></div><h2>Description de la recette</h2><p class=description ng-bind-html=data.description></p></div><div class=clearfloat></div></div><!--[if lt IE 9]>
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Happy chief - Impression recette</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800")' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/print.css" media="all"/>
+</head>
+<body ng-app="happyChiefApp" ng-controller="PrintController">
+
+<div class="row main">
+
+    <div class="columns col1">
+        <h2>Liste de courses détachable</h2>
+        <p class="title"><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
+
+        <p class="title"><strong>{{data.title}}</strong></p>
+
+        <ul class="ingredients" ng-repeat="ingredients in shopGroups">
+
+            <li class="group" ng-show="ingredients[0].shopGroup">{{ingredients[0].shopGroup}}</li>
+
+            <li itemprop="ingredients" ng-repeat="ingredient in ingredients">
+                {{ingredient.label}}  - {{ingredient.qte}} {{ingredient.unit}}
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="columns col2">
+        <div class="thumbnail">
+            <img itemprop="image" class="recipe-image" src="{{data.picture || 'images/no-picture.png'}}">
+        </div>
+        <h2>Les ingrédients</h2>
+        <p class="qte-title"><em>Quantité pour {{data.nbPeople}} personne(s)</em></p>
+
+        <ul class="ingredients" ng-repeat="ingredients in steps">
+
+            <li class="step" ng-show="ingredients[0].step">{{ingredients[0].step}}</li>
+
+            <li itemprop="ingredients" ng-repeat="ingredient in ingredients">
+                {{ingredient.label}}  - {{ingredient.qte}} {{ingredient.unit}}
+            </li>
+
+        </ul>
+
+        <div class="chief-tip">
+            <h2>Le + du chef</h2>
+            <p ng-bind-html="data.chiefTip"></p>
+        </div>
+
+    </div>
+
+    <div class="columns col3">
+        <h1>{{data.title}}</h1>
+        <p class="summary">{{data.summary}}</p>
+
+        <div class="row times">
+            <div class="columns col1">
+                Préparation : {{data.timePreparation}}
+            </div>
+            <div class="columns col2">
+                Cuisson : {{data.timeBaking}}
+            </div>
+            <div class="columns col3">
+                Repos : {{data.timeRest}}
+            </div>
+            <div class="clearfloat"></div>
+        </div>
+
+
+        <h2>Description de la recette</h2>
+
+        <p class="description" ng-bind-html="data.description">
+
+        </p>
+    </div>
+
+    <div class="clearfloat"></div>
+</div>
+
+<!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
-<![endif]--><script src=scripts/vendor-print.js></script><script src=scripts/scripts-print.js></script>
+<![endif]-->
+
+<script src="scripts/vendor-print.js"></script>
+
+<script src="scripts/scripts-print.js"></script>
+
+
+</body>
+</html>

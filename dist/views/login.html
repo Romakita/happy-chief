@@ -1,1 +1,39 @@
-<form method=post ng-submit=login()><h1><span class="fa fa-lock"></span> Authentification</h1><div data-alert="" class="alert-box alert radius" ng-hide=!messageError>{{messageError}}</div><div class=row><div class="large-12 columns"><label>E-mail</label><input id=credential-mail class="credentials input-mail" name=mail ng-model=credentials.mail></div></div><div class=row><div class="large-12 columns"><label>Mot de passe</label><input type=password id=credential-password class="credentials input-password" name=password ng-model=credentials.password></div></div><button type=submit class="button button-secondary">Me connecter</button></form><hr><br><a href=/auth/facebook class="button button-facebook button-social"><span class="fa fa-facebook"></span> Facebook</a> <a href=/auth/twitter class="button button-twitter button-social"><span class="fa fa-twitter"></span> Twitter</a> <a href=/auth/google class="button button-google button-social"><span class="fa fa-google-plus"></span> Google+</a><hr><p>Vous n'avez pas de compte ? <a href=#/signup>Inscrivez-vous</a></p><p>Ou retourner à la page <a href="/">d'accueil</a>.</p>
+
+    <form method="post" ng-submit="login()">
+        <h1><span class="fa fa-lock"></span> Authentification</h1>
+
+        <div data-alert class="alert-box alert radius" ng-hide="!messageError">{{messageError}}</div>
+
+        <div class="row">
+            <div class="large-12 columns">
+                <label>E-mail</label>
+
+                <input id="credential-mail" type="text" class="credentials input-mail" name="mail" ng-model="credentials.mail" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Mot de passe</label>
+                <input id="credential-password" type="password" class="credentials input-password" name="password" ng-model="credentials.password" value="">
+            </div>
+        </div>
+
+        <button type="submit" class="button button-secondary">Me connecter</button>
+
+    </form>
+
+
+
+<hr />
+        <br/>
+
+    <a href="/auth/facebook" class="button button-facebook button-social"><span class="fa fa-facebook"></span> Facebook</a>
+    <a href="/auth/twitter" class="button button-twitter button-social"><span class="fa fa-twitter"></span> Twitter</a>
+    <a href="/auth/google" class="button button-google button-social"><span class="fa fa-google-plus"></span> Google+</a>
+
+
+
+<hr />
+
+<p>Vous n'avez pas de compte ? <a href="#/signup">Inscrivez-vous</a></p>
+<p>Ou retourner à la page <a href="/">d'accueil</a>.</p>
