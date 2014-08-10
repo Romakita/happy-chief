@@ -141,7 +141,7 @@ module.exports = function(passport) {
             process.nextTick(function() {
 
                 // find the user in the database based on their facebook id
-                User.findOne({'id': profile.id, 'type': 'facebook'}, function(err, user) {
+                User.findOne({'parentID': profile.id, 'type': 'facebook'}, function(err, user) {
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
 
@@ -156,11 +156,11 @@ module.exports = function(passport) {
                         var newUser = new User();
 
                         // set all of the facebook information in our user model
-                        newUser.type =  'facebook';
-                        newUser.id =    profile.id; // set the users facebook id
-                        newUser.token = token; // we will save the token that facebook provides to the user
-                        newUser.name =  profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                        newUser.login = newUser.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+                        newUser.type =      'facebook';
+                        newUser.parentID =  profile.id; // set the users facebook id
+                        newUser.token =     token; // we will save the token that facebook provides to the user
+                        newUser.name =      profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+                        newUser.login =     newUser.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
 
                         // save our user to the database
                         newUser.save(function(err) {
@@ -193,7 +193,7 @@ module.exports = function(passport) {
             // User.findOne won't fire until we have all our data back from Twitter
             process.nextTick(function() {
 
-                User.findOne({'id' : profile.id, 'type': 'twitter'}, function(err, user) {
+                User.findOne({'parentID' : profile.id, 'type': 'twitter'}, function(err, user) {
 
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
@@ -209,7 +209,7 @@ module.exports = function(passport) {
 
                         // set all of the user data that we need
                         newUser.type =          'twitter';
-                        newUser.id =            profile.id;
+                        newUser.parentID =      profile.id;
                         newUser.token =         token;
                         newUser.login =         profile.username;
                         newUser.displayName =   profile.displayName;
@@ -244,7 +244,7 @@ module.exports = function(passport) {
             process.nextTick(function() {
 
                 // try to find the user based on their google id
-                User.findOne({ 'id' : profile.id, 'type': 'google'}, function(err, user) {
+                User.findOne({ 'parentID' : profile.id, 'type': 'google'}, function(err, user) {
                     if (err)
                         return done(err);
 
@@ -258,7 +258,7 @@ module.exports = function(passport) {
 
                         // set all of the relevant information
                         newUser.type =      'google';
-                        newUser.id =        profile.id;
+                        newUser.parentID =  profile.id;
                         newUser.token =     token;
                         newUser.name =      profile.displayName;
 
