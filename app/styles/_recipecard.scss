@@ -1,0 +1,104 @@
+/* Recipe Cards */
+
+#primary .grid .page,
+#primary .grid .post {
+
+  background: none repeat scroll 0% 0% #FFF;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  float: left;
+  padding: 0px;
+  margin: 10px;
+  width: 355px;
+
+  .published-time span {
+    background: none repeat scroll 0% 0% #FFF;
+  }
+
+  .post-thumbnail {
+    text-align: center;
+    margin-bottom: 20px;
+    height:225px;
+  }
+
+  .attachment-post-thumbnail{
+    opacity:0;
+    transition: all 0.2s ease-in-out 0s;
+
+    &.loaded{
+      opacity:1;
+    }
+
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+
+  h2.entry-title{
+    color: #000;
+    font-family: "Droid Serif",sans-serif;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 23px;
+    margin: 0px 15px -1px;
+    padding: 10px 2px;
+    text-align: center;
+  }
+
+  h2.entry-title a {
+    color: #69594b;
+  }
+
+  .entry-content{
+    margin: 0px 15px;
+    padding: 10px;
+    line-height:1.65;
+    text-align: center;
+
+    a{
+      display: block;
+    }
+  }
+
+  /** FOOTER **/
+  footer {
+    background: url('../images/double-line.png') repeat-x scroll center top #FAFAFA;
+    box-shadow: 0px 0px 10px #FFF inset;
+    padding: 10px 0px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-family: "Arial",sans-serif;
+
+    ul {
+      list-style: none outside none;
+      margin: 0px;
+      padding: 0px 15px;
+      overflow: hidden;
+    }
+
+    .post-meta {
+      list-style: none outside none;
+      margin: 0px;
+      padding: 0px 15px;
+      overflow: hidden;
+      font-size: 11px;
+
+      li {
+        float: right;
+        padding-right: 10px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+
+        a{
+          line-height: 14px;
+          padding-left: 15px;
+        }
+      }
+
+      .fa {
+        color: #888;
+        margin-right:5px;
+      }
+    }
+  }
+}

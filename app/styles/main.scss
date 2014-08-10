@@ -1,5 +1,5 @@
 $body-font-color: #444 !default;
-$body-font-family:"Georgia","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif !default;
+$body-font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif !default;
 $body-font-size:0.8em !default;
 
 $pagination-li-font-color: #333;
@@ -10,11 +10,14 @@ $pagination-link-current-font-color: #444;
 $pagination-link-current-font-weight: bold;
 $pagination-link-current-cursor: default;
 $pagination-link-current-active-bg: transparent;
+$button-bg: #69594b;
+$button-hover-color: #56402d;
 // bower:scss
 // endbower
 
 @import
 "topbar",
+"login",
 "../bower_components/foundation/scss/foundation.scss";
 
 
@@ -22,11 +25,12 @@ html {
   font: 112.5%/1.65 serif;
 }
 body {
-    font-size:0.8em;
-    -moz-hyphens: auto;
-    word-wrap: break-word;
-   font-family: "Georgia","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: url('../images/bg/content-bg.gif') repeat scroll center center #E8E8E8;
+  font-size:$body-font-size;
+  font-family:$body-font-family;
+  color:$body-font-color;
+  -moz-hyphens: auto;
+  word-wrap: break-word;
+  background: url('../images/bg/content-bg.gif') repeat scroll center center #E8E8E8;
 }
 p, ul, ol, li{
   font-size:0.8rem;
@@ -40,228 +44,108 @@ a {
 }
 
 .container:after {
-    clear: both;
+  clear: both;
 }
 .container:before, .container:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .container {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 
-.container .row{
-  max-width:none;
-}
+  .row{
+    max-width:none;
+  }
 
-@media only screen and (min-width: 90.063em) { 
-	.container {
-		max-width: 1170px;
-	}
-    #primary{
-      width:69%;
+  &.sticky.fixed{
+    background:#fff6e2;
+    border-bottom:1px solid #daccae;
+    max-width: none;
+
+    > nav{
+      max-width: 1170px;
+      margin:auto;
     }
+  }
+}
+
+@media only screen and (min-width: 90.063em) {
+  .container {
+    max-width: 1170px;
+  }
+  #primary{
+    width:69%;
+  }
 }
 
 /* TopBar */
 
-.container.sticky.fixed{
-  background:white;
-  border-bottom:1px solid #DFDFDF;
-  max-width: none;
-}
-.container.sticky.fixed > nav{
-  max-width: 1170px;
-  margin:auto;
-}
 .top-bar .name h1 a {
- padding-left: 13.667px
+  padding-left: 13.667px
 }
+
 .top-bar-section{
+
   padding-top:20px;
-}
-.top-bar-section li:not(.has-form) a:not(.button){
-  line-height:40px;
+
+  li:not(.has-form) a:not(.button){
+    line-height:40px;
+  }
+
+  .has-dropdown > a:after {
+    top:20px;
+  }
 }
 
-.top-bar-section .has-dropdown > a:after {
-  top:20px;
+/** Global **/
+
+.entry-title {
+  font-size: 28px;
+  line-height: 34px;
+  margin-bottom: 10px;
+
+  a {
+    text-shadow: 1px 1px 1px #fff;
+  }
 }
 
-/* */
-
-.card-navbar{
-  background: url('../images/double-line.png') repeat-x scroll center bottom #FAFAFA;
-  box-shadow: 0px 0px 10px #FFF inset;
-  clear: both;
-  margin: 35px -15px;
-  overflow: hidden;
-  padding: 10px;
-  height:47px;
-  margin-bottom:20px;
-}
-.card-navbar.bottom{
-  background-position:center top;
-  margin-top:20px;
-}
-
-.card-navbar ul.pagination li a, .card-navbar ul.pagination li button{
-  margin:0;
-  font-size: 15px;
-}
-.card-navbar ul.pagination li a:hover {
-  color: $primary-color;
-}
-
-.card-navbar .lbl-pages{
-  float: left;
-  margin-top: 6px;
-  padding: 0px 5px;
-  color: #888;
-  margin-right: 10px;
-}
-
-ul.pagination li.unavailable{
-  display:none;
-}
-
-/* Recipe Cards */
-
-#primary .grid .page .entry-content,
-#primary .grid .post .entry-content {
-  margin: 0px 15px;
-  padding: 10px;
-  line-height:1.65;
-  text-align: center;
-}
-#primary .grid .page .entry-content a,
-#primary .grid .post .entry-content a{
-  display: block;
-}
-
-#primary .grid .page h2.entry-title,
-#primary .grid .post h2.entry-title {
-  color: #000;
-  font-family: "Droid Serif",sans-serif;
-  font-size: 17px;
-  font-weight: normal;
-  line-height: 23px;
-  margin: 0px 15px -1px;
-  padding: 10px 2px;
-  text-align: center;
-}
-
-#primary .grid .page h2.entry-title a,
-#primary .grid .post h2.entry-title a {
-  color: #000;
-}
-#primary .grid .page .published-time span,
-#primary .grid .post .published-time span {
-  background: none repeat scroll 0% 0% #FFF;
-}
-#primary .grid .post .attachment-post-thumbnail,
-#primary .grid .page .attachment-post-thumbnail{
-  opacity:0;
-}
-#primary .grid .post .attachment-post-thumbnail.loaded,
-#primary .grid .page .attachment-post-thumbnail.loaded{
-  opacity:1;
-}
-#primary .grid .page .attachment-post-thumbnail:hover,
-#primary .grid .post .attachment-post-thumbnail:hover{
-  opacity: 0.6;
-}
-#primary .grid .page .attachment-post-thumbnail,
-#primary .grid .post .attachment-post-thumbnail {
-  transition: all 0.2s ease-in-out 0s;
-}
-
-#primary .grid .page,
-#primary .grid .post {
-  background: none repeat scroll 0% 0% #FFF;
-  border-radius: 5px;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-  float: left;
-  padding: 0px;
-  margin: 10px;
-  width: 355px;
-}
-
-.post-thumbnail {
-  text-align: center;
-  margin-bottom: 20px;
-  height:225px;
+.page-content,
+.entry-content,
+.entry-summary {
+  margin: 1.5em 0 0;
 }
 
 .published-time {
+
   display: block;
   font-size: 11px;
   margin: 10px 15px 0px;
   text-align: center;
   text-decoration: none;
   background: url('../images/double-line.png') repeat-x scroll center center transparent;
+
+  span {
+    background: none repeat scroll 0% 0% #E8E8E8;
+    display: inline-block;
+    padding: 0px 10px;
+    font-family: "Lucida Grande", Tahoma;
+    font-size: 10px;
+    font-weight: lighter;
+    font-variant: normal;
+    text-transform: uppercase;
+    text-align: center !important;
+    letter-spacing: 0.3em;
+  }
 }
 
-.published-time span {
-  background: none repeat scroll 0% 0% #E8E8E8;
-  display: inline-block;
-  padding: 0px 10px;
-  font-family: "Lucida Grande",Tahoma;
-  font-size: 10px;
-  font-weight: lighter;
-  font-variant: normal;
-  text-transform: uppercase;
-  text-align: center !important;
-  letter-spacing: 0.3em;
-}
-
-#primary .grid .page footer, #primary .grid .post footer {
-  background: url('../images/double-line.png') repeat-x scroll center top #FAFAFA;
-  box-shadow: 0px 0px 10px #FFF inset;
-  padding: 10px 0px;
-  margin-top: 10px;
-  font-size: 11px;
-  font-family: "Arial",sans-serif;
-}
-.post-meta {
-  list-style: none outside none;
-  margin: 0px;
-  padding: 0px 15px;
-  overflow: hidden;
-  font-size: 11px;
-}
-#primary .grid .page footer ul, #primary .grid .post footer ul {
-  list-style: none outside none;
-  margin: 0px;
-  padding: 0px 15px;
-  overflow: hidden;
-}
-
-.post-meta li {
-  float: right;
-  padding-right: 10px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-}
-.post-meta li a{
-  line-height: 14px;
-  padding-left: 15px;
-}
-
-.post-meta .fa {
-  color: #888;
-  margin-right:5px;
-}
+@import "cardnav";
+@import "recipecard";
 
 
-#primary .grid .page footer, #primary .grid .post footer {
-  font-size: 11px;
-  font-family: "Arial",sans-serif;
-}
 
 
 @import 'recipe.scss';

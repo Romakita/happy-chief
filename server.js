@@ -4,6 +4,7 @@
 'use strict';
 
 var express =       require('express');
+var expressSession =require('express-session');
 var passport =      require('passport');
 var flash =         require('connect-flash');
 var morgan =        require('morgan');
@@ -16,6 +17,13 @@ app.use(morgan('dev'));                             // log every request to the 
 app.use(cookieParser());                            // read cookies (needed for auth)
 app.use(bodyParser.json());                         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended:true}));    // to support URL-encoded bodies
+
+app.use(expressSession({
+    secret: 'secretkeyhappychief77',
+    maxAge: new Date(Date.now() + 3600000),
+    resave:true,
+    saveUninitialized:true
+}));
 
 app.use('/admin', expressJwt({
     secret: 'secretkeyhappychief77',

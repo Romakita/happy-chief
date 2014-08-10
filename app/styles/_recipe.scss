@@ -8,64 +8,63 @@
   padding: 10px;
   text-align: center;
 }
-.page .entry-header {
-  padding-top: 0px;
+
+.page {
+  .entry-header {
+    padding-top: 0px;
+  }
+
+  .published-time {
+    margin-top: 0px;
+  }
+
+  .post .published-time {
+    margin-top: 10px;
+  }
 }
-.page .published-time {
-  margin-top: 0px;
-}
-.page .post .published-time {
-  margin-top: 10px;
-}
+
 .page-title {
   background: url("../images/double-line.png") repeat-x scroll center center transparent;
   font-size: 20px;
   font-weight: normal;
   margin-bottom: 20px;
   text-align: center;
+
+  span {
+    background: #E8E8E8;
+    padding: 0 10px;
+  }
 }
-.page-title span {
-  background: #E8E8E8;
-  padding: 0 10px;
-}
-.entry-title {
-  font-size: 28px;
-  line-height: 34px;
-  margin-bottom: 10px;
-}
-.entry-title a {
-  text-shadow: 1px 1px 1px #fff;
-}
+
+
 #author-desc {
   margin-bottom: 24px;
   padding-left: 95px;
 }
-.single .published-time {
-  margin: 10px 0px 0px;
-}
-.single .entry-header {
-  padding: 10px 0px;
-}
-.single .entry-meta {
-  font-size: 11px;
-  text-transform: uppercase;
-  font-family: 'Droid Sans', sans-serif;
-  margin-top: 18px;
-  clear: both;
-}
-.single .entry-meta .post-meta {
-  padding: 0px;
-}
-.single .entry-meta .post-meta li {
-  float: left;
+.single{
+  .published-time {
+    margin: 10px 0px 0px;
+  }
+  .entry-header {
+    padding: 10px 0px;
+  }
+  .entry-meta {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: 'Droid Sans', sans-serif;
+    margin-top: 18px;
+    clear: both;
+  }
+  .entry-meta .post-meta {
+    padding: 0px;
+  }
+  .entry-meta .post-meta li {
+    float: left;
+  }
 }
 
 /* content */
-.page-content,
-.entry-content,
-.entry-summary {
-  margin: 1.5em 0 0;
-}
+
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
@@ -74,9 +73,11 @@
   background: url("../images/double-line.png") repeat-x scroll center top;
   padding-top: 10px;
 }
+
 .page-links a {
   font-weight: normal;
 }
+
 #author-data h4 {
   margin-bottom: 10px;
 }

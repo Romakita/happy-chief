@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('happyChiefApp')
-    .service('AuthService', function AuthService($http) {
+    .service('authService', function authService($rootScope, $http, session, authEvents) {
 
         return {
             /**
@@ -13,13 +13,10 @@ angular.module('happyChiefApp')
                 return $http
                     .post('/login', credentials)
                     .success(function (data, status, headers, config) {
-
-                        //session.create(data);
+                        session.create(data);
                     })
                     .error(function (data, status, headers, config) {
-
-
-                        //session.destroy();
+                        session.destroy();
                     });
             },
             /**
@@ -32,13 +29,10 @@ angular.module('happyChiefApp')
                 return $http
                     .post('/signup', credentials)
                     .success(function (data, status, headers, config) {
-
-                        //session.create(data);
+                        session.create(data);
                     })
                     .error(function (data, status, headers, config) {
-
-
-                        //session.destroy();
+                        session.destroy();
                     });
             },
             /**
@@ -46,7 +40,9 @@ angular.module('happyChiefApp')
              * @returns {*}
              */
             logout:function(){
-                $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
+
+                $rootScope.$broadcast(authEvents.logoutSuccess);
+
                 return $http
                     .post('/logout')
                     .success(function (data, status, headers, config) {

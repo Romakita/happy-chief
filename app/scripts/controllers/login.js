@@ -1,10 +1,18 @@
 'use strict';
 
 angular.module('happyChiefApp')
-    .controller('LoginCtrl', function ($scope, AuthService) {
+    .controller('LoginCtrl', function ($rootScope, $scope, $routeParams, $location, authService, authEvents, session) {
 
         $scope.credentials = {};
 
+        if($routeParams.json){
+            var obj = JSON.parse($routeParams.json);
+            session.create(obj);
+
+            $rootScope.$broadcast(authEvents.loginSuccess);
+
+            $location.path('/');
+        }
 
         //$scope.storeLogin = false;
         //restore account info
@@ -20,27 +28,25 @@ angular.module('happyChiefApp')
             $scope.mail = $('#credential-mail').val();
             $scope.password = $('#credential-password').val();
 
-            if($scope.credentials.mail == '' || $scope.credentials.password == ''){
+            if ($scope.credentials.mail == '' || $scope.credentials.password == '') {
                 $scope.messageError = 'Veuillez saisir votre e-mail et votre mot de passe pour vous connecter';
                 return;
             }
 
             /*if($scope.storeLogin){
-                $cookieStore.put('login', $scope.credentials.login);
-                $cookieStore.put('password', $scope.credentials.password);
-            }*/
+             $cookieStore.put('login', $scope.credentials.login);
+             $cookieStore.put('password', $scope.credentials.password);
+             }*/
 
-            AuthService.login($scope.credentials).then(function () {
+            authService.login($scope.credentials).then(function () {
 
-                //$rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-                //$location.path('admin');
+                $rootScope.$broadcast(authEvents.loginSuccess);
 
             }, function () {
+                $rootScope.$broadcast(authEvents.loginFailed);
                 $scope.messageError = 'Votre e-mail et mot de passe ne correspond à aucun compte utilisateur';
-                //$rootScope.account = null;
-                //$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-                //$scope.messageError = "Erreur lors de l'authentification";
             });
+
         };
 
     });

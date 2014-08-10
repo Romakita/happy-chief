@@ -14,6 +14,10 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
+            .when('/auth/:json', {
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl'
+            })
             .when('/signup', {
                 templateUrl: 'views/signup.html',
                 controller: 'SignupCtrl'
@@ -35,7 +39,7 @@ angular
             });
     })
 
-    .controller('AppController', function ($rootScope, $scope, Recipe) {
+    .controller('AppController', function ($rootScope, $scope, $location, Recipe, authService, session, userRoles, authEvents) {
 
         $scope.randomRecipes = [];
 
@@ -43,13 +47,41 @@ angular
             $scope.randomRecipes = data;
         });
 
-        $scope.$watch('search', function(val){
+        $scope.account =        null;
+        $scope.userRoles =      userRoles;
+        $scope.isAuthorized =   authService.isAuthorized;
 
+        if(session.exists()){
+            session.restore();
+            $scope.account =   session.user;
+        }
+
+        $rootScope.$on(authEvents.loginSuccess, function(event, args) {
+            $scope.account = session.user;
+            $location.path('/');
         });
+
+        $rootScope.$on(authEvents.logoutSuccess, function(event, args) {
+            $scope.account = null;
+        });
+
+        $rootScope.$on(authEvents.loginFailed, function(event, args) {
+            $scope.account = null;
+            $location.path('/login');
+        });
+
+        $rootScope.$on(authEvents.sessionTimeout, function(event, args) {
+            $scope.account = null;
+            $location.path('/login');
+        });
+
+        $scope.logout = function(){
+            authService.logout();
+        };
 
     })
 
-    .run(function ($rootScope, $route, $location) {
+    .run(function ($rootScope, $route, $location, $routeParams) {
 
         console.log('run app');
 

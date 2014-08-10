@@ -30,7 +30,7 @@
     <top-bar sticky-topbar="true" sticky-class="sticky" data-topbar data-options="sticky_on: large">
         <ul class="title-area">
             <li class="name">
-                <h1><a href="#">Happy Chief</a></h1>
+                <h1><a href="#"><img src="images/logo.png" alf="Happy Chief"/></a></h1>
             </li>
 
         </ul>
@@ -39,11 +39,24 @@
             <!-- Right Nav Section -->
             <ul class="right">
                 <li><a href="#">Accueil</a></li>
-                <li has-dropdown>
+                <li has-dropdown ng-show="categories">
                     <a href="#">Categories</a>
                     <ul top-bar-dropdown>
                         <li><a href="#">First link in dropdown</a></li>
                     </ul>
+                </li>
+
+                <li ng-show="account">
+                    <a href="#/my-recipes/">Mes recettes</a>
+                </li>
+
+                <li ng-show="!account">
+                    <a href="#/login">Connexion</a>
+
+                </li>
+
+                <li ng-show="account">
+                    <a ng-click="logout()">Déconnexion</a>
                 </li>
             </ul>
 
@@ -142,6 +155,9 @@
 <script src="scripts/controllers/signup.js"></script>
 <script src="scripts/services/user.js"></script>
 <script src="scripts/services/authservice.js"></script>
+<script src="scripts/services/authevents.js"></script>
+<script src="scripts/services/authinterceptor.js"></script>
+<script src="scripts/services/session.js"></script>
 <!-- endbuild -->
 </body>
 </html>
