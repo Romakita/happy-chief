@@ -1,3 +1,9 @@
+<div class="recipe-buttons-actions" ng-show="account">
+    <a href="" class=""><i class="fa fa-book"></i> Classer la recette</a> <span>|</span>
+    <a href="" class=""><i class="fa fa-bookmark-o"></i> Bookmarker</a> <span>|</span>
+    <a href="" class=""><i class="fa fa-star-o"></i> Noter</a>
+</div>
+
 <article id="post-{{data.id}}" class="post-{{data.id}} post type-post status-publish format-standard has-post-thumbnail hentry">
     <header class="entry-header">
         <a href="" class="published-time" rel="bookmark"><span class="entry-date updated">Non classé</span></a>
@@ -10,22 +16,10 @@
 
         <div class="purerecipe-wrapper tearedh">
             <section class="purerecipe" itemscope="" itemtype="http://schema.org/Recipe">
-                <header>
-                    <div>
-                        <h3 itemprop="name">{{data.title}}</h3>
-                        <p class="author-data"><!--By
-                            <a class="recipe-author" itemprop="author"> purethemes</a>-->
-                            <span class="recipe-data"><meta itemprop="datePublished" content="{{data.dateCreate || now | date : 'yyyy-MM-dd'}}">{{(data.dateCreate || now) | date : 'd MMMM yyyy'}}</span>
-                        </p>
-                    </div>
+                <div class="recipe-summary">
                     <a>
                         <img itemprop="image" class="recipe-image" src="{{data.picture || 'images/no-picture.png'}}">
                     </a>
-                </header>
-
-
-                <div class="recipe-content">
-
 
                     <div class="recipe-add-data">
                         <ul>
@@ -45,6 +39,24 @@
                         </ul>
 
                     </div>
+                </div>
+
+                <header>
+                    <div>
+                        <h3 itemprop="name">{{data.title}}</h3>
+                        <p class="author-data"><!--By
+                            <a class="recipe-author" itemprop="author"> purethemes</a>-->
+                            <span class="recipe-data"><meta itemprop="datePublished" content="{{data.dateCreate || now | date : 'yyyy-MM-dd'}}">{{(data.dateCreate || now) | date : 'd MMMM yyyy'}}</span>
+                        </p>
+                    </div>
+
+                </header>
+
+
+                <div class="recipe-content">
+
+
+
 
                     <p class="recipe-desc" itemprop="description">{{data.summary}}</p>
 
@@ -108,7 +120,7 @@
 
 </article>
 
-<nav role="navigation" id="nav-below" class="post-navigation">
+<!--<nav role="navigation" id="nav-below" class="post-navigation">
     <h1 class="screen-reader-text">Post navigation</h1>
 
     <div class="nav-previous">
@@ -126,4 +138,4 @@
         </a>
     </div>
 
-</nav>
+</nav>-->

@@ -1,23 +1,48 @@
-.entry-header {
-  font-size: 28px;
-  line-height: 34px;
-  color: rgba(0,0,0,0.9);
-  font-family: 'Droid Serif', sans-serif;
-  font-weight: normal;
-  margin: 0 0px 10px;
-  padding: 10px;
-  text-align: center;
+
+.recipe-buttons-actions{
+  padding:10px;
+
+  a{
+    padding:8px 15px;
+    display: inline-block;
+    border-radius:4px;
+
+    &:hover{
+      background:white;
+    }
+  }
+  span{
+    margin-right:5px;
+    margin-left:5px;
+  }
 }
 
-.page {
+.post{
   .entry-header {
+    font-size: 28px;
+    line-height: 34px;
+    color: rgba(0, 0, 0, 0.9);
+    font-family: 'Droid Serif', sans-serif;
+    font-weight: normal;
+    margin: 0 0px 10px;
+    padding: 10px;
+    text-align: center;
     padding-top: 0px;
   }
 
-  .published-time {
-    margin-top: 0px;
+  .recipe-summary {
+    float: right;
+    width: 200px;
+    position: relative;
+    z-index: 2;
   }
 
+  .published-time {
+    margin: 0px;
+  }
+}
+
+.page {
   .post .published-time {
     margin-top: 10px;
   }
@@ -36,11 +61,11 @@
   }
 }
 
-
 #author-desc {
   margin-bottom: 24px;
   padding-left: 95px;
 }
+
 .single{
   .published-time {
     margin: 10px 0px 0px;
@@ -105,185 +130,189 @@
   padding: 0;
 }
 
-.tearedh .purerecipe {
-  -moz-transform: rotate(1deg);
-  -webkit-transform: rotate(1deg);
-  transform: rotate(1deg);
-  background: url('../images/bg.png') repeat top left;
-  margin-top: -14px;
-  margin-bottom: 0px;
-  padding-left: 10px;
-  box-shadow: 1px 1px 1px #eee;
-  border-radius: 15px 0px 0px 0px;
-  position: relative;
-  margin: 30px 0px;
+.tearedh {
+
+  header {
+    padding: 40px 30px 10px;
+    overflow: hidden;
+
+    div {
+      float: left;
+    }
+  }
+
+  p.author-data {
+    padding: 0px;
+    font-size: 11px;
+    font-style: italic;
+  }
+
+  h4,h3 {
+    font-family: 'Satisfy','Georgia', cursive;
+    font-size:30px;
+    max-width:500px;
+  }
+
+  h4 {
+    margin:0px 0px 15px;
+    padding:15px 0px 0px 0px;
+    font-size:24px;
+    font-weight: normal;
+  }
+
+  .recipe-image {
+    padding: 5px;
+    background: #fff;
+    float: right;
+    margin-top: -6px;
+    -moz-transform: rotate(2deg);
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
+  }
+
+  .purerecipe {
+    -moz-transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+    transform: rotate(1deg);
+    background: url('../images/bg.png') repeat top left;
+    margin-top: -14px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    box-shadow: 1px 1px 1px #eee;
+    border-radius: 15px 0px 0px 0px;
+    position: relative;
+    margin: 30px 0px;
+
+    &:before {
+      background: url("../images/pin-left.png") no-repeat scroll left top transparent;
+      content: "";
+      display: block;
+      height: 69px;
+      position: absolute;
+      right: 41px;
+      top: -19px;
+      width: 72px;
+      z-index: 9999;
+    }
+  }
+
+  .recipe-content {
+
+    padding: 0px 30px 20px;
+    overflow: hidden;
+
+    &:before {
+      background: url("../images/coffe-stain.png") no-repeat scroll left top transparent;
+      content: "";
+      display: block;
+      height: 360px;
+      position: absolute;
+      right: 0;
+      top: 233px;
+      width: 139px;
+    }
+  }
+
+  .recipe-desc{
+    max-width:465px;
+  }
+
+
+  ul li.separator {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-left: 0;
+  }
+
+  .recipe-add-data {
+    background: url("../images/yellowcard-bg.png") no-repeat scroll right top #FFFF9E;
+    width:225px;
+    float: right;
+    position: relative;
+    padding:20px;
+    font-size:14px;
+    margin-top:17px;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  ul.ingredients {
+    width:70%;
+  }
+  .instructions{
+    min-height: 200px;
+  }
+
+  .instructions ul li.active,
+  ul.ingredients li.active {
+    background: url("../images/checkbox-checked.png") no-repeat scroll left 6px transparent;
+    padding-left:20px;
+    text-decoration: line-through
+  }
+
+  ul.ingredients,
+  .instructions ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom:20px;
+
+    li{
+      background: url("../images/checkbox.png") no-repeat scroll left 6px transparent;
+      padding-left: 20px;
+      cursor: pointer;
+      margin: 4px 0px;
+
+      &.step{
+        background:transparent;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  ul.ingredients li.separator {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-left: 0;
+  }
+
+
+  .recipe-add-data {
+    &:before {
+      background: url("../images/pin-right.png") no-repeat scroll left top transparent;
+      content: "";
+      display: block;
+      height: 70px;
+      position: absolute;
+      right: 41px;
+      top: -15px;
+      width: 57px;
+      z-index: 9999;
+    }
+
+    em {
+      background: url('../images/penball-line.png') repeat-x bottom;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+
+      li {
+        margin: 4px 0px;
+      }
+    }
+  }
 }
 
-.tearedh header {
-  padding: 40px 30px 10px;
-}
-
-.tearedh p.author-data {
-  padding: 0px;
-  font-size: 11px;
-  font-style: italic;
-}
-
-.tearedh h4,
-.tearedh h3 {
-  font-family: 'Satisfy','Georgia', cursive;
-  font-size:30px;
-  max-width:500px;
-}
-
-.tearedh h4 {
-  margin:0px 0px 15px;
-  padding:15px 0px 0px 0px;
-  font-size:24px;
-  font-weight: normal;
-}
-
-.tearedh .purerecipe:before {
-  background: url("../images/pin-left.png") no-repeat scroll left top transparent;
-  content: "";
-  display: block;
-  height: 69px;
-  position: absolute;
-  right: 41px;
-  top: -19px;
-  width: 72px;
-  z-index: 9999;
-}
-
-.tearedh .recipe-content:before {
-  background: url("../images/coffe-stain.png") no-repeat scroll left top transparent;
-  content: "";
-  display: block;
-  height: 360px;
-  position: absolute;
-  right: 0;
-  top: 233px;
-  width: 139px;
-}
-
-.tearedh .recipe-content {
-  padding: 0px 30px 20px;
-  overflow: hidden;
-}
-.tearedh .recipe-desc{
-  max-width:465px;
-}
-.tearedh ul.ingredients {
-  width:70%;
-}
-
-.tearedh .instructions{
-  min-height: 200px;
-}
-
-.tearedh ul li.separator {
-  background: none repeat scroll 0 0 transparent;
-  font-size: 15px;
-  font-weight: bold;
-  margin-top: 15px;
-  padding-left: 0;
-}
-
-.tearedh .instructions ul li.active,
-.tearedh ul.ingredients li.active {
-  background: url("../images/checkbox-checked.png") no-repeat scroll left 6px transparent;
-  padding-left:20px;
-  text-decoration: line-through
-}
-
-.tearedh .recipe-add-data {
-  background: url("../images/yellowcard-bg.png") no-repeat scroll right top #FFFF9E;
-  width:225px;
-  float: right;
-  position: relative;
-  padding:20px;
-  font-size:14px;
-  margin-top:17px;
-  box-shadow:0px 1px 3px rgba(0,0,0,0.3);
-}
-
-.tearedh .recipe-add-data ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
-.tearedh .recipe-add-data ul li {
-  margin: 4px 0px;
-}
-
-.tearedh .recipe-add-data em {
-  background: url('../images/penball-line.png') repeat-x bottom;
-}
-
-.tearedh .recipe-add-data:before {
-  background: url("../images/pin-right.png") no-repeat scroll left top transparent;
-  content: "";
-  display: block;
-  height: 70px;
-  position: absolute;
-  right: 41px;
-  top: -15px;
-  width: 57px;
-  z-index: 9999;
-}
-
-.tearedh header {
-  overflow: hidden;
-}
-
-.tearedh header div {
-  float: left;
-}
-
-.tearedh .recipe-image {
-  padding: 5px;
-  background: #fff;
-  float: right;
-  margin-top: -35px;
-  -moz-transform: rotate(2deg);
-  -webkit-transform: rotate(2deg);
-  transform: rotate(2deg);
-  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
-}
-
-.tearedh ul.ingredients,
-.tearedh .instructions ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-  margin-bottom:20px;
-}
-
-.tearedh .instructions ul li,
-.tearedh ul.ingredients li {
-  background: url("../images/checkbox.png") no-repeat scroll left 6px transparent;
-  padding-left: 20px;
-  cursor: pointer;
-  margin: 4px 0px;
-}
-
-.tearedh .instructions ul li.step,
-.tearedh ul.ingredients li.step {
-  background:transparent;
-}
-
-.tearedh ul.ingredients li a {
-  text-decoration: underline;
-}
-
-.tearedh ul.ingredients li.separator {
-  background: none repeat scroll 0 0 transparent;
-  font-size: 15px;
-  font-weight: bold;
-  margin-top: 15px;
-  padding-left: 0;
-}
 
 /**Navbar*/
 
