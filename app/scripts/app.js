@@ -8,7 +8,7 @@ angular
         'ngRoute',
         'mm.foundation'
     ])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/login', {
                 templateUrl: 'views/login.html',
@@ -34,9 +34,26 @@ angular
                 templateUrl: 'views/recipes-list.html',
                 controller: 'RecipeListCtrl'
             })
+            .when('/my-recipes', {
+              templateUrl: 'views/my-recipes.html',
+              controller: 'MyRecipesCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
+
+        try {
+
+            $httpProvider.interceptors.push([
+                '$injector',
+                function ($injector) {
+                    return $injector.get('authInterceptor');
+                }
+            ]);
+
+        } catch (er) {
+            alert(er)
+        }
     })
 
     .controller('AppController', function ($rootScope, $scope, $location, Recipe, authService, session, userRoles, authEvents) {
@@ -46,6 +63,10 @@ angular
         Recipe.randomList(8).success(function(data){
             $scope.randomRecipes = data;
         });
+
+        $scope.onFocusSearch = function(){
+            $location.path('/');
+        };
 
         $scope.account =        null;
         $scope.userRoles =      userRoles;

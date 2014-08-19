@@ -13,7 +13,7 @@ var bodyParser =    require('body-parser');
 var expressJwt =       require('express-jwt');
 
 var app =  module.exports = express();
-app.use(morgan('dev'));                             // log every request to the console
+//app.use(morgan('dev'));                             // log every request to the console
 app.use(cookieParser());                            // read cookies (needed for auth)
 app.use(bodyParser.json());                         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended:true}));    // to support URL-encoded bodies
@@ -41,3 +41,4 @@ require('./lib/db').initialize(app);
 require('./lib/recipe').initialize(app, passport);
 require('./lib/category').initialize(app, passport);
 require('./lib/user').initialize(app, passport);
+require('./lib/bookmark').initialize(app, passport);

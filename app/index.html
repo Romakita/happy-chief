@@ -75,7 +75,7 @@
                 <form role="search" method="get" class="search-form">
                     <span class="screen-reader-text">Search for:</span>
                     <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-                    <input class="search-field" placeholder="Search …" value="" name="s" title="Search for:" type="search" ng-model="search">
+                    <input class="search-field" placeholder="Search …" value="" name="s" title="Search for:" type="search" ng-model="search" ng-focus="onFocusSearch()">
                 </form>
                 <div class="row">
                     <div class="small-3 columns">
@@ -158,6 +158,7 @@
 <script src="scripts/services/authevents.js"></script>
 <script src="scripts/services/authinterceptor.js"></script>
 <script src="scripts/services/session.js"></script>
+<script src="scripts/controllers/my-recipes.js"></script>
 <!-- endbuild -->
 </body>
 </html>

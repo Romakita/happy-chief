@@ -25,10 +25,10 @@ angular.module('happyChiefApp')
         $scope.login = function() {
             delete $scope.messageError;
 
-            $scope.mail = $('#credential-mail').val();
-            $scope.password = $('#credential-password').val();
+            $scope.credentials.email = $('#credential-email').val();
+            $scope.credentials.password = $('#credential-password').val();
 
-            if ($scope.credentials.mail == '' || $scope.credentials.password == '') {
+            if ($scope.credentials.email == '' || $scope.credentials.password == '') {
                 $scope.messageError = 'Veuillez saisir votre e-mail et votre mot de passe pour vous connecter';
                 return;
             }

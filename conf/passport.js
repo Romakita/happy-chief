@@ -54,7 +54,7 @@ module.exports = function(passport) {
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
                 User.findOne({ 'email' :  email }, function(err, user) {
-                    console.log(user);
+
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -63,7 +63,6 @@ module.exports = function(passport) {
                     if (user) {
                         return done(null, false);
                     } else {
-
                         // if there is no user with that email
                         // create the user
                         var newUser = new User();
@@ -105,6 +104,7 @@ module.exports = function(passport) {
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
             User.findOne({ 'login' :  email }, function(err, user) {
+
                 // if there are any errors, return the error before anything else
                 if (err) {
                     return done(err);
@@ -113,10 +113,11 @@ module.exports = function(passport) {
                 if (!user) {
                     return done(null, false); // req.flash is the way to set flashdata using connect-flash
                 }
+
                 // if the user is found but the password is wrong
                 if (!user.validPassword(password))
                     return done(null, false); // create the loginMessage and save it to session as flashdata
-
+console.log(user);
                 // all is well, return successful user
                 return done(null, user);
             });

@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('happyChiefApp')
-  .controller('RecipeCtrl', function ($scope, $routeParams, Recipe) {
+  .controller('RecipeCtrl', function ($scope, $routeParams, Recipe, User) {
 
         $scope.steps = {};
+        $scope.bookmark = false;
 
         $scope.sanitize = function(str){
-            return str.replace("<br />", "").replace(/<br \/>$/, '');
+            if(str)
+                return str.replace("<br />", "").replace(/<br \/>$/, '');
+
+            return '';
         };
 
         if($routeParams.id){
@@ -27,4 +31,14 @@ angular.module('happyChiefApp')
 
             });
         }
+
+        $scope.addBookmark = function(){
+            $scope.bookmark = true;
+            User.addBookmark($scope.data._id);
+        };
+
+        $scope.removeBookmark = function(){
+            $scope.bookmark = false;
+            User.removeBookmark($scope.data._id);
+        };
   });

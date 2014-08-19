@@ -1,7 +1,12 @@
 <div class="recipe-buttons-actions" ng-show="account">
-    <a href="" class=""><i class="fa fa-book"></i> Classer la recette</a> <span>|</span>
-    <a href="" class=""><i class="fa fa-bookmark-o"></i> Bookmarker</a> <span>|</span>
-    <a href="" class=""><i class="fa fa-star-o"></i> Noter</a>
+    <a href="" class="" ng-click="setCategory()"><i class="fa fa-book"></i> Classer la recette</a> <span>|</span>
+
+    <a href="" class="" ng-click="addBookmark()" ng-hide="bookmark"><i class="fa fa-bookmark-o"></i> Ajouter aux favoris</a>
+    <a href="" class="" ng-click="removeBookmark()" ng-hide="!bookmark"><i class="fa fa-bookmark"></i> Supprimer de mes favoris</a>
+
+    <span>|</span>
+
+    <a href="" class="" ng-click="note()"><i class="fa fa-star-o"></i> Noter</a>
 </div>
 
 <article id="post-{{data.id}}" class="post-{{data.id}} post type-post status-publish format-standard has-post-thumbnail hentry">
