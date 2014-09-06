@@ -29,6 +29,11 @@ angular.module('happyChiefApp')
                     $scope.steps[current.step].push(current);
                 }
 
+                angular.forEach(User.getBookmarks(), function(item){
+                    if(item._recipe._id == data._id){
+                        $scope.bookmark = true;
+                    }
+                });
             });
         }
 

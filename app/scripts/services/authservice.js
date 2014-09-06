@@ -52,14 +52,7 @@ angular.module('happyChiefApp')
                         session.destroy();
                     });
             },
-            /**
-             *
-             * @returns {boolean}
-             */
-            isAuthenticated: function () {
-                return session.exists();
-            },
-
+            
             isRoot:function(){
                 return session.user.root;
             }

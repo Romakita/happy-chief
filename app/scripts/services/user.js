@@ -2,6 +2,7 @@
 
 angular.module('happyChiefApp')
     .service('User', function User($http, session) {
+
         function getBookmaks(id){
             return $http.get('/admin/users/' + session.getUser()._id + '/bookmarks');
         }
@@ -32,6 +33,14 @@ angular.module('happyChiefApp')
                     });
             },
 
+            getBookmarks: function(){
+
+                if(!session.exists()){
+                    return [];
+                }
+
+                return session.getUser().bookmarks || [];
+            }
 
         }
     });
