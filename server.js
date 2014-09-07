@@ -37,7 +37,12 @@ app.use(passport.session());    // persistent login sessions
 app.use(flash());               // use connect-flash for flash messages stored in session
 
 require('./conf/passport')(passport); // pass passport for configuration
-require('./lib/db').initialize(app);
+
+require('./lib/db').initialize({
+    server:     app,
+    settings:   require('./conf/db.js')
+});
+
 require('./lib/recipe').initialize(app, passport);
 require('./lib/category').initialize(app, passport);
 require('./lib/user').initialize(app, passport);

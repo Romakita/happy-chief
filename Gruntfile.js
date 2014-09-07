@@ -140,19 +140,21 @@ module.exports = function (grunt) {
             all: [
                 'Gruntfile.js',
                 '<%= config.app %>/scripts/{,*/}*.js',
-                '!<%= config.app %>/scripts/vendor/*',
-                'test/spec/{,*/}*.js'
+                '!<%= config.app %>/scripts/vendor/*'
             ]
         },
 
         // Mocha testing framework configuration options
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-                }
-            }
+
+        simplemocha: {
+            options: {
+                globals:        ['expect'],
+                timeout:        3000,
+                ignoreLeaks:    false,
+                ui:             'bdd',
+                reporter:       'tap'
+            },
+            all: { src: ['test/server_spechelper.js', 'test/server/*.js'] }
         },
 
         // Compiles Sass to CSS and generates necessary files if requested
@@ -301,32 +303,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        // cssmin: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/styles/main.css': [
-        //                 '.tmp/styles/{,*/}*.css',
-        //                 '<%= config.app %>/styles/{,*/}*.css'
-        //             ]
-        //         }
-        //     }
-        // },
-        // uglify: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/scripts/scripts.js': [
-        //                 '<%= config.dist %>/scripts/scripts.js'
-        //             ]
-        //         }
-        //     }
-        // },
-        // concat: {
-        //     dist: {}
-        // },
-
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
@@ -380,6 +356,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-simple-mocha');
 
     grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
@@ -425,8 +402,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            'connect:test',
-            'mocha'
+            'simplemocha'
         ]);
     });
 
