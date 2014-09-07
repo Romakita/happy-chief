@@ -43,7 +43,7 @@ require('./lib/db').initialize({
     settings:   require('./conf/db.js')
 });
 
-require('./lib/recipe').initialize(app, passport);
 require('./lib/category').initialize(app, passport);
+require('./lib/recipe').initialize(app, passport);
 require('./lib/user').initialize(app, passport);
 require('./lib/bookmark').initialize(app, passport);

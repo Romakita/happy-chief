@@ -38,6 +38,10 @@ angular
               templateUrl: 'views/my-recipes.html',
               controller: 'MyRecipesCtrl'
             })
+            .when('/categories', {
+              templateUrl: 'views/categories.html',
+              controller: 'CategoriesCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -56,7 +60,7 @@ angular
         }
     })
 
-    .controller('AppController', function ($rootScope, $scope, $location, Recipe, authService, session, userRoles, authEvents) {
+    .controller('AppController', function ($rootScope, $scope, $location, Recipe, Category, authService, session, userRoles, authEvents) {
 
         $scope.randomRecipes = [];
 
@@ -100,6 +104,16 @@ angular
             authService.logout();
         };
 
+
+        Category.list().success(function(data){
+            $scope.categories = data;
+        });
+
+        $rootScope.$on('categories.update', function(event, data){
+            Category.list().success(function(data){
+                $scope.categories = data;
+            });
+        });
     })
 
     .run(function ($rootScope, $route, $location, $routeParams) {

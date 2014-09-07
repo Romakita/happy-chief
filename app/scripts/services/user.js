@@ -8,6 +8,11 @@ angular.module('happyChiefApp')
         }
 
         return {
+            /**
+             *
+             * @param id
+             * @returns {*}
+             */
             addBookmark:function(id){
                 return $http.post('/admin/users/' + session.getUser()._id + '/bookmarks/' + id)
                     .success(function(){
@@ -19,7 +24,11 @@ angular.module('happyChiefApp')
                             });
                     });
             },
-
+            /**
+             *
+             * @param id
+             * @returns {*}
+             */
             removeBookmark:function(id){
                 return $http.delete('/admin/users/' + session.getUser()._id + '/bookmarks/' + id)
 
@@ -32,7 +41,10 @@ angular.module('happyChiefApp')
                             });
                     });
             },
-
+            /**
+             *
+             * @returns {*}
+             */
             getBookmarks: function(){
 
                 if(!session.exists()){
@@ -40,6 +52,14 @@ angular.module('happyChiefApp')
                 }
 
                 return session.getUser().bookmarks || [];
+            },
+            /**
+             *
+             * @param id
+             * @returns {HttpPromise}
+             */
+            getRecipes:function(id){
+                return $http.get('/users/' + id  + '/recipes');
             }
 
         }

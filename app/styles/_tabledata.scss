@@ -1,0 +1,31 @@
+.tabledata{
+  table{
+    background:transparent;
+    border:0px;
+    border-collapse: collapse;
+    thead{
+      background:transparent;
+      tr{
+        border-bottom:2px solid #69594B;
+        th{
+          color:#444;
+        }
+      }
+    }
+
+    input, div.switch label, button, .button{
+      margin:0;
+    }
+
+    .button.white{
+      padding:8px 10px;
+      background:white;
+      color:#444;
+    }
+
+    tr.even, tr.alt, tr:nth-of-type(2n){
+      background:#f2f2f2;
+    }
+  }
+
+}

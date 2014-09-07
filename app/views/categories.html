@@ -1,0 +1,42 @@
+<h1>Gestion des catégories <a href="" class="button right tiny" ng-click="add()">Ajouter</a></h1>
+
+<div class="tabledata" ng-show="list.length">
+
+    <table class="table" style="width:100%">
+        <thead>
+        <tr>
+
+            <th width="" class="" style="">
+
+                <span>Catégorie</span>
+
+            </th>
+
+            <th width="" class="" style="">
+
+                <span>Activé</span>
+
+            </th>
+
+            <th width="55" class="col-actions"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="item in list" ng-class-odd="'odd'" ng-class-even="'even'">
+
+            <td><input type="text" ng-model="list[$index].label" ng-blur="onChange(item)"></td>
+            <td>
+                <div class="switch round  small ">
+                    <input id="category{{$index}}" type="checkbox" ng-model="list[$index].enabled" ng-change="onChange(item)">
+                    <label for="category{{$index}}"></label>
+                </div>
+            </td>
+
+            <td class="col-actions">
+                <a ng-click="openRemove($event, item)" class="button tiny radius white action"><i class="fa fa-trash-o"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

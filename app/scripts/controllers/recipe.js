@@ -30,7 +30,7 @@ angular.module('happyChiefApp')
                 }
 
                 angular.forEach(User.getBookmarks(), function(item){
-                    if(item._recipe._id == data._id){
+                    if(item._recipe == data._id){
                         $scope.bookmark = true;
                     }
                 });
