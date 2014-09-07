@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - '0.10'
 before_install:
-  - 'npm install -g bower grunt-cli'
-  - 'sleep 15'
-  - 'mongo happy-chief-test --eval \'db.addUser("travis", "test");\''
+  - npm install -g bower grunt-cli
+  - sleep 15
+  - mongo happy-chief-test --eval 'db.addUser("travis", "test");'
 install:
-  - 'npm install'
+  - npm install
