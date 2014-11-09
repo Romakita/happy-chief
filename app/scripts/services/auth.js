@@ -151,7 +151,7 @@ angular.module('auth', [])
 
     })
 
-    .provider('$auth', function authService($rootScope, $http, $authSession, $authEvents) {
+    .provider('$auth', function() {
 
         var options = {
             route: {
