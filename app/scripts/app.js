@@ -6,8 +6,13 @@ angular
         'ngResource',
         'ngSanitize',
         'ngRoute',
-        'mm.foundation'
+        'mm.foundation',
+        'happychief.services',
+        'happychief.directives',
+        'happychief.filters',
+        'happychief.controllers'
     ])
+
     .config(function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/login', {
@@ -45,19 +50,6 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
-
-        try {
-
-            $httpProvider.interceptors.push([
-                '$injector',
-                function ($injector) {
-                    return $injector.get('authInterceptor');
-                }
-            ]);
-
-        } catch (er) {
-            alert(er)
-        }
     })
 
     .controller('AppController', function ($rootScope, $scope, $location, Recipe, Category, authService, session, userRoles, authEvents) {

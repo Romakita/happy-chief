@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.services')
     .service('session', function ($window) {
 
         //console.log('service session');

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.controllers')
   .controller('MyRecipesCtrl', function ($scope, User, session) {
 
         User.getRecipes(session.getUser()._id)

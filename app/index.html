@@ -118,17 +118,6 @@
     </div>
 </div>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
-</script>
-
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -146,24 +135,38 @@
 <script src="bower_components/foundation/js/foundation.min.js"></script>
 <script src="bower_components/angular-foundation/mm-foundation-tpls.js"></script>
 <!-- endbuild -->
-
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!-- build:js({.tmp,app}) scripts/script.js -->
 <script src="scripts/app.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/filters.js -->
+<script src="scripts/filters/filters.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/services.js -->
+<script src="scripts/services/services.js"></script>
+<script src="scripts/services/user.js"></script>
+<script src="scripts/services/auth.js"></script>
+<script src="scripts/services/session.js"></script>
 <script src="scripts/services/recipe.js"></script>
+<script src="scripts/services/category.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/directives.js -->
+<script src="scripts/directives/directives.js"></script>
 <script src="scripts/directives/recipe-card.js"></script>
-<script src="scripts/controllers/recipe-list.js"></script>
-<script src="scripts/controllers/recipe.js"></script>
 <script src="scripts/directives/imageonload.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/controllers.js -->
+<script src="scripts/controllers/controllers.js"></script>
 <script src="scripts/controllers/login.js"></script>
 <script src="scripts/controllers/signup.js"></script>
-<script src="scripts/services/user.js"></script>
-<script src="scripts/services/authservice.js"></script>
-<script src="scripts/services/authevents.js"></script>
-<script src="scripts/services/authinterceptor.js"></script>
-<script src="scripts/services/session.js"></script>
-<script src="scripts/services/category-srv.js"></script>
 <script src="scripts/controllers/my-recipes.js"></script>
 <script src="scripts/controllers/categories.js"></script>
+<script src="scripts/controllers/recipe-list.js"></script>
+<script src="scripts/controllers/recipe.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>

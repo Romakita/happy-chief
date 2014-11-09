@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.directives')
     .controller('CardsContainerController', function ($scope, $attrs, $parse, $interpolate, $routeParams, $location, $sanitize) {
         var self = this;
 

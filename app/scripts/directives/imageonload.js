@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.directives')
   .directive('imageonload', function () {
     return {
       restrict: 'A',

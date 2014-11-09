@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.services')
     .service('User', function User($http, session) {
 
         function getBookmaks(id){

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.services')
     .service('Recipe', function Recipe($http) {
         return {
             /**

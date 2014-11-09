@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.controllers')
     .controller('RecipeListCtrl', function ($scope, Recipe) {
         console.log('Recipes list');
 

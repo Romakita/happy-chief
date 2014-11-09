@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.controllers')
   .controller('RecipeCtrl', function ($scope, $routeParams, Recipe, User) {
 
         $scope.steps = {};

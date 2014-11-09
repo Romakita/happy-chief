@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('happyChiefApp')
+angular.module('happychief.controllers')
     .controller('LoginCtrl', function ($rootScope, $scope, $routeParams, $location, authService, authEvents, session) {
 
         $scope.credentials = {};
