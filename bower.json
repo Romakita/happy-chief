@@ -12,7 +12,8 @@
     "jquery": "~2.1.1",
     "font-awesome": "~4.1.0",
     "amplify": "~1.1.2",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "toastr": "~2.1.0"
   },
   "devDependencies": {
     "foundation": "~5.3.1",

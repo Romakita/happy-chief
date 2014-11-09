@@ -34,14 +34,25 @@ angular.module('auth', [])
 
                 if(angular.isFunction(current.$$route.$auth) || angular.isArray(current.$$route.$auth)){
 
-                    if($injector.invoke(current.$$route.$auth)){
-                        if(!$authSession.exists()){
-                            $rootScope.$broadcast($authEvents.notAuthenticated);
+                    if (!$authSession.exists()) {
+                        $rootScope.$broadcast($authEvents.notAuthenticated);
+                    }else {
+
+                        var $stopped = false;
+                        var $stop = function () {
+                            $stopped = true;
+                        };
+
+                        $injector.invoke(current.$$route.$auth, null, {$stop: $stop});
+
+                        if ($stopped) {
+                            $rootScope.$broadcast($authEvents.notAuthorized);
                         }
+
                     }
 
                 }else{
-                    if(current.$$route.$auth) {
+                    if(current.$$route.$auth) { //auth required
                         if(!$authSession.exists()){
                             $rootScope.$broadcast($authEvents.notAuthenticated);
                         }
@@ -61,7 +72,6 @@ angular.module('auth', [])
                 config.headers = config.headers || {};
 
                 if ($authSession.exists()) {
-
                     config.headers.Authorization = 'Bearer ' + $authSession.getToken();
                 }
                 return config;
@@ -289,6 +299,78 @@ angular.module('auth', [])
                         });
                 }
             };
+        };
+    })
+
+    .provider('$authRoles', function(){
+
+        var $roles = {};
+        var key = false;
+
+        this.addRole = function(key, name, modules){
+            $roles[key] = {
+                'label':name,
+                modules: modules || {}
+            }
+        };
+
+        this.whenGetRole = function(k){
+            key = k;
+        };
+
+        this.$get = function($authSession){
+
+            return {
+                /**
+                 *
+                 * @param role
+                 * @returns {*}
+                 */
+                getText:function(role){
+                    return $roles[role] ? $roles[role].label : 'Utilisateur';
+                },
+                /**
+                 *
+                 */
+                getAccessTo: _.memoize(function(module, fn){
+                    var role;
+
+                    if(angular.isFunction(key) || angular.isArray(key)){
+                         role = $injector.invoke(key);
+                    }else{
+                        role = $authSession.getUser()[key];
+                    }
+
+                    var access = $roles[role];
+
+                    if(access === undefined){
+                        return false;
+                    }
+
+                    if(access.modules === undefined){
+                        console.warn('Accès module non défini');
+                        return false;
+                    }
+
+                    if(typeof access.modules[module] == 'object'){
+                        return access.modules[module][fn] !== undefined ? access.modules[module][fn] : true; //par défaut une fonction non définie est accessible
+                    }
+
+                    return access.modules[module] === undefined ? true : access.modules[module];//par défaut un module non défini est accessible
+
+                }, function(module, fn){
+
+                    var role;
+
+                    if(angular.isFunction(key) || angular.isArray(key)){
+                        role = $injector.invoke(key);
+                    }else{
+                        role = $authSession.getUser()[key];
+                    }
+
+                    return role + module + fn;
+                })
+            }
         };
     });
 

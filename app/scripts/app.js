@@ -17,7 +17,7 @@ angular
         'happychief.controllers'
     ])
 
-    .config(function ($routeProvider, $authProvider) {
+    .config(function ($routeProvider, $authProvider, $authRolesProvider) {
         $routeProvider
             .when('/login', {
                 templateUrl: 'views/login.html',
@@ -63,6 +63,14 @@ angular
             .requestLogout('/logout')
             .requestSignup('/signup');
 
+        $authRolesProvider
+            .whenGetRole(function($authSession){
+                return $authSession.exists() ? '' : $authSession.getUser();
+            })
+            .addRole('admin', 'Administrateur', {
+
+            });
+
     })
 
     .controller('AppController', function ($rootScope, $scope, $location, $authEvents, $auth, Recipe, Category) {
@@ -77,12 +85,9 @@ angular
             $location.path('/');
         };
 
-        //$scope.userRoles =      userRoles;
-
         $scope.logout = function(){
             $auth.logout();
         };
-
 
         Category.list().success(function(data){
             $scope.categories = data;
@@ -96,8 +101,6 @@ angular
     })
 
     .run(function ($rootScope, $route, $location, $routeParams) {
-
-
 
         var original = $location.path;
         $location.path = function (path, reload) {
