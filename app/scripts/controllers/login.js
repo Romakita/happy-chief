@@ -1,16 +1,13 @@
 'use strict';
 
 angular.module('happychief.controllers')
-    .controller('LoginCtrl', function ($rootScope, $scope, $routeParams, $location, authService, authEvents, session) {
+
+    .controller('LoginCtrl', function ($rootScope, $scope, $routeParams, $location, $auth) {
 
         $scope.credentials = {};
 
         if($routeParams.json){
-            var obj = JSON.parse($routeParams.json);
-            session.create(obj);
-
-            $rootScope.$broadcast(authEvents.loginSuccess);
-
+            $auth.store(JSON.parse($routeParams.json));
             $location.path('/');
         }
 
@@ -38,14 +35,14 @@ angular.module('happychief.controllers')
              $cookieStore.put('password', $scope.credentials.password);
              }*/
 
-            authService.login($scope.credentials).then(function () {
+            $auth
+                .login($scope.credentials)
+                .success(function(){
 
-                $rootScope.$broadcast(authEvents.loginSuccess);
+                })
+                .error(function(){
 
-            }, function () {
-                $rootScope.$broadcast(authEvents.loginFailed);
-                $scope.messageError = 'Votre e-mail et mot de passe ne correspond à aucun compte utilisateur';
-            });
+                })
 
         };
 
