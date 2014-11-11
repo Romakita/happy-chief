@@ -209,7 +209,7 @@ angular.module('auth', [])
         };
 
         this.requestLogout = function(route){
-            options.request.login = route;
+            options.request.logout = route;
             return this;
         };
 
