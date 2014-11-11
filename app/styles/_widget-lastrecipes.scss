@@ -1,0 +1,68 @@
+/* last Recipes */
+.sidebar h3 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 8px 0px 20px;
+  background: url('../images/double-line.png') repeat-x scroll center center transparent;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.sidebar h3 span {
+  background: none repeat scroll 0% 0% #FFF;
+  padding: 0px 10px 10px 0px;
+}
+
+.widget {
+  margin: 0px 0px 1.5em;
+}
+
+.widget .search-submit {
+  display: none;
+}
+
+.widget.purepress-recent ul {
+  list-style: none outside none;
+  margin: 0px;
+  padding: 0px;
+  width:100%;
+}
+.widget.purepress-recent ul li {
+  overflow: hidden;
+  margin-bottom: 15px;
+  transition: all 0.5s ease-out 0s;
+}
+
+.widget.purepress-recent ul li:hover {
+  padding-left: 10px;
+}
+
+.widget ul li {
+  margin-top: 5px;
+}
+
+.widget.purepress-recent ul .widget-thumb {
+  float: left;
+  margin-right: 10px;
+}
+
+.widget.purepress-recent ul .widget-thumb img {
+  max-width: 85px;
+  max-height: 85px;
+  border: 1px solid #EEE;
+  padding: 3px;
+  transition: all 1s ease-out 0s;
+}
+.widget.purepress-recent ul .widget-thumb img:hover {
+  opacity: 0.6;
+  border: 1px solid #DDD;
+}
+.widget.purepress-recent ul .widget-text a {
+  font-size:0.8rem;
+  display: block;
+  margin-bottom: 5px;
+}
+.widget.purepress-recent ul .widget-text span {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: "Arial",sans-serif;
+}

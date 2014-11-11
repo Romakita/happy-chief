@@ -10,11 +10,14 @@
   height:47px;
   margin-bottom:20px;
 
-  &.bottom{
-    background-position:center top;
-    margin-top:20px;
+  &.top{
+    margin-top:0px !important;
   }
 
+  &.bottom{
+    background-position:center top;
+    margin-top:20px !important;
+  }
 
   ul.pagination{
     li a,
@@ -38,5 +41,12 @@
     padding: 0px 5px;
     color: #888;
     margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1180px) {
+  .card-navbar{
+    margin: 35px 0px;
+    margin-bottom:20px;
   }
 }

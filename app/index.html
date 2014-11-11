@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="happyChiefApp" ng-controller="AppController"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="happyChiefApp" ng-controller="AppController"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="happyChiefApp" ng-controller="AppController"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="happyChiefApp" ng-controller="AppController"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <title>Happy chief</title>
@@ -22,12 +22,12 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="happyChiefApp" ng-controller="AppController">
+<body>
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="container sticky">
+<div class="container sticky" ng-class="{opened:open}">
     <top-bar sticky-topbar="true" sticky-class="sticky" data-topbar data-options="sticky_on: large">
         <ul class="title-area">
             <li class="name">
@@ -36,15 +36,23 @@
 
         </ul>
 
+        <ul class="button-menu">
+            <li>
+                <a ng-click="toggleMenu()"><i class="fa fa-bars fa-2x"></i></a>
+            </li>
+        </ul>
+
         <top-bar-section>
             <!-- Right Nav Section -->
-            <ul class="right">
+
+
+            <ul class="right menu clearfix">
                 <li><a href="#">Accueil</a></li>
 
                 <li has-dropdown ng-show="categories">
                     <a>Categories</a>
                     <ul top-bar-dropdown>
-                        <li ng-repeat="category in categories"><a href="#/recipes/category/{{category._id}}">{{category.label}}</a></li>
+                        <li ng-repeat="category in categories"><a href="#/category/{{category._id}}">{{category.label}}</a></li>
                     </ul>
                 </li>
 
@@ -63,17 +71,14 @@
                     <a ng-click="logout()">Déconnexion</a>
                 </li>
             </ul>
-
-
         </top-bar-section>
     </top-bar>
 </div>
 
 <!-- Add your site or application content here -->
 <div class="container">
-    <div class="row">
 
-        <div id="secondary" class="small-3 large-3 columns sidebar widget-area">
+        <div id="secondary" class="sidebar widget-area">
             <div id="search-2" class="widget  widget_search">
                 <h3><span>Rechercher</span></h3>
                 <form role="search" method="get" class="search-form">
@@ -93,6 +98,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="purepress_recent-2" class="widget  purepress-recent">
                 <h3><span>Recettes random</span></h3>
                 <ul>
@@ -113,10 +119,10 @@
             </div>
         </div>
 
-        <div id="primary" class="small-3 large-8  columns" ng-view="">
+        <div id="primary" class="contents" ng-view="">
 
         </div>
-    </div>
+
 </div>
 
 <!--[if lt IE 9]>

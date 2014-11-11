@@ -35,6 +35,10 @@ angular
                 templateUrl: 'views/recipe.html',
                 controller: 'RecipeCtrl'
             })
+            .when('/category/:category/:page?/:limit?/:search?', {
+                templateUrl: 'views/recipes-list.html',
+                controller: 'RecipeListCtrl'
+            })
             .when('/recipes/:page?/:limit?/:search?', {
                 templateUrl: 'views/recipes-list.html',
                 controller: 'RecipeListCtrl'
@@ -88,6 +92,11 @@ angular
     .controller('AppController', function ($rootScope, $scope, $location, $authEvents, $auth, Recipe, Category) {
 
         $scope.randomRecipes = [];
+        $scope.open = false;
+
+        $scope.toggleMenu = function(){
+            $scope.open = !$scope.open;
+        };
 
         Recipe.randomList(8).success(function(data){
             $scope.randomRecipes = data;

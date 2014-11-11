@@ -19,8 +19,10 @@ $button-hover-color: #56402d;
 "topbar",
 "login",
 "tabledata",
+"button",
+"widget-lastrecipes",
+"widget-search",
 "../bower_components/foundation/scss/foundation.scss";
-
 
 html {
   font: 112.5%/1.65 serif;
@@ -57,48 +59,62 @@ a {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  max-width: 1170px;
 
-  .row{
-    max-width:none;
+  > .sidebar{
+    float: left;
+    width:300px;
   }
 
-  &.sticky.fixed{
-    background:#fff6e2;
-    border-bottom:1px solid #daccae;
-    max-width: none;
+  > .contents{
+    float:right;
+    width:calc(100% - 370px);
+    padding-top:15px;
+  }
+}
 
-    > nav{
-      max-width: 1170px;
-      margin:auto;
+@media only screen and (max-width: 1180px) {
+  body{
+    background: #E8E8E8;
+  }
+
+  .container {
+    max-width: 768px;
+
+    > .sidebar{
+      display:none;
+    }
+    > .contents{
+      width:100%;
+      float:none;
+      margin-left:auto;
+      margin-right:auto;
+    }
+  }
+
+  .container:not(.fixed){
+    > .top-bar{
+      height:140px !important;
+      .top-bar-section ul{
+        float:none !important;
+      }
+
+      .title-area{
+        float:none;
+        width:100%;
+        h1  a {
+          text-align: center;
+        }
+      }
     }
   }
 }
 
-@media only screen and (min-width: 90.063em) {
-  .container {
-    max-width: 1170px;
-  }
-  #primary{
-    width:69%;
-  }
-}
-
-/* TopBar */
-
-.top-bar .name h1 a {
-  padding-left: 13.667px
-}
-
-.top-bar-section{
-
-  padding-top:20px;
-
-  li:not(.has-form) a:not(.button){
-    line-height:40px;
-  }
-
-  .has-dropdown > a:after {
-    top:20px;
+@media only screen and (max-width: 767px) {
+  .container:not(.fixed) {
+    > .top-bar {
+      height: auto !important;
+    }
   }
 }
 
@@ -143,10 +159,7 @@ a {
   }
 }
 
+
 @import "cardnav";
 @import "recipecard";
-
-
-
-
 @import 'recipe.scss';

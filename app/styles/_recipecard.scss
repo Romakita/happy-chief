@@ -6,10 +6,12 @@
   background: none repeat scroll 0% 0% #FFF;
   border-radius: 5px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-  float: left;
+  display:block;
   padding: 0px;
-  margin: 10px;
+  margin: 10px auto;
   width: 355px;
+  overflow:hidden;
+
   .published-time{
     margin:10px;
   }
@@ -102,5 +104,21 @@
         margin-right:5px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #primary .grid .page,
+  #primary .grid .post{
+    width: auto;
+    margin-left:5px;
+    margin-right:5px;
+  }
+}
+@media only screen and (max-width: 40.063em) {
+  #primary .grid .page,
+  #primary .grid .post {
+    margin-left:0px;
+    margin-right:0px;
   }
 }

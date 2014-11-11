@@ -1,15 +1,16 @@
 'use strict';
 
 angular.module('happychief.controllers')
-    .controller('RecipeListCtrl', function ($scope, Recipe) {
+    .controller('RecipeListCtrl', function ($scope, $routeParams, Recipe) {
         console.log('Recipes list');
 
 
         $scope.loader = function(o){
-            console.log(o);
 
-            return Recipe.getList(o).error(function(err){
-                console.log(err);
-            });
+            if($routeParams.category){
+                o.category = $routeParams.category;
+            }
+
+            return Recipe.getList(o);
         };
     });
