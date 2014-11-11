@@ -5,7 +5,8 @@ angular
         'ngCookies',
         'ngResource',
         'ngSanitize',
-        'ngRoute'
+        'ngRoute',
+        'happychief.services'
     ])
 
     .controller('PrintController', function ($rootScope, $scope, $location, Recipe) {
