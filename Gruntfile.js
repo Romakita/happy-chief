@@ -384,7 +384,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('grabber', 'Get recipe from website', function () {
         var done = this.async();
-        var grabber = require('./lib/grabber');
+        var grabber = require('./lib/utils/grabber');
 
         grabber.getRecipes().then(function(){
             grunt.log.writeln('DONE');

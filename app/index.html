@@ -42,24 +42,24 @@
                 <li><a href="#">Accueil</a></li>
 
                 <li has-dropdown ng-show="categories">
-                    <a href="#">Categories</a>
+                    <a>Categories</a>
                     <ul top-bar-dropdown>
                         <li ng-repeat="category in categories"><a href="#/recipes/category/{{category._id}}">{{category.label}}</a></li>
                     </ul>
                 </li>
 
-                <li ng-show="account.role != 'user'"><a href="#/categories">Gérer les catégories</a></li>
+                <li ng-show="getAccessTo('category', 'edit')"><a href="#/categories">Gérer les catégories</a></li>
 
-                <li ng-show="account">
+                <li ng-show="isConnect()">
                     <a href="#/my-recipes/">Mes recettes</a>
                 </li>
 
-                <li ng-show="!account">
+                <li ng-show="!isConnect()">
                     <a href="#/login">Connexion</a>
 
                 </li>
 
-                <li ng-show="account">
+                <li ng-show="isConnect()">
                     <a ng-click="logout()">Déconnexion</a>
                 </li>
             </ul>

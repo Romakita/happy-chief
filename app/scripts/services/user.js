@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('happychief.services')
-    .service('User', function User($http, session) {
+    .service('User', function User($http, $authSession) {
 
         function getBookmaks(id){
-            return $http.get('/admin/users/' + session.getUser()._id + '/bookmarks');
+            return $http.get('/admin/users/' + $authSession.getUser()._id + '/bookmarks');
         }
 
         return {
@@ -14,7 +14,7 @@ angular.module('happychief.services')
              * @returns {*}
              */
             addBookmark:function(id){
-                return $http.post('/admin/users/' + session.getUser()._id + '/bookmarks/' + id)
+                return $http.post('/admin/users/' + $authSession.getUser()._id + '/bookmarks/' + id)
                     .success(function(){
                         getBookmaks(session.getUser()._id)
                             .success(function(data){
@@ -30,14 +30,14 @@ angular.module('happychief.services')
              * @returns {*}
              */
             removeBookmark:function(id){
-                return $http.delete('/admin/users/' + session.getUser()._id + '/bookmarks/' + id)
+                return $http.delete('/admin/users/' + $authSession.getUser()._id + '/bookmarks/' + id)
 
                     .success(function(){
-                        getBookmaks(session.getUser()._id)
+                        getBookmaks($authSession.getUser()._id)
                             .success(function(data){
-                                session.getUser().bookmarks = data;
+                                $authSession.getUser().bookmarks = data;
 
-                                session.save();
+                                $authSession.save();
                             });
                     });
             },
@@ -47,11 +47,11 @@ angular.module('happychief.services')
              */
             getBookmarks: function(){
 
-                if(!session.exists()){
+                if(!$authSession.exists()){
                     return [];
                 }
 
-                return session.getUser().bookmarks || [];
+                return $authSession.getUser().bookmarks || [];
             },
             /**
              *

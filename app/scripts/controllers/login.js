@@ -2,7 +2,7 @@
 
 angular.module('happychief.controllers')
 
-    .controller('LoginCtrl', function ($rootScope, $scope, $routeParams, $location, $auth) {
+    .controller('LoginCtrl', function ($rootScope, $scope, $routeParams, $location, $auth, $toastr) {
 
         $scope.credentials = {};
 
@@ -26,7 +26,7 @@ angular.module('happychief.controllers')
             $scope.credentials.password = $('#credential-password').val();
 
             if ($scope.credentials.email == '' || $scope.credentials.password == '') {
-                $scope.messageError = 'Veuillez saisir votre e-mail et votre mot de passe pour vous connecter';
+                $toastr.error('Veuillez saisir votre e-mail et votre mot de passe pour vous connecter');
                 return;
             }
 
@@ -38,10 +38,11 @@ angular.module('happychief.controllers')
             $auth
                 .login($scope.credentials)
                 .success(function(){
-
+                    $toastr.success('Connexion réussi');
                 })
-                .error(function(){
-
+                .error(function(data){
+                    console.warn(data)
+                    $toastr.error('Identifiant ou mot de passe incorrect');
                 })
 
         };

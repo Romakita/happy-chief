@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('happychief.controllers')
-  .controller('MyRecipesCtrl', function ($scope, User, session) {
+  .controller('MyRecipesCtrl', function ($scope, User, $authSession) {
 
-        User.getRecipes(session.getUser()._id)
+        User.getRecipes($authSession.getUser()._id)
             .success(function(data){
                 $scope.href = '#/recipes';
 

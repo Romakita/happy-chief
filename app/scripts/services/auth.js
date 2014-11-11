@@ -22,7 +22,7 @@ angular.module('auth', [])
 
     })
 
-    .run(function($rootScope, $injector, $auth, $authSession, $authEvents){
+    .run(function($rootScope, $injector, $auth, $authSession, $authRoles, $authEvents){
 
         if($authSession.exists()){//restore les données utilisateurs
             $rootScope.account =   $authSession.getUser();
@@ -32,10 +32,11 @@ angular.module('auth', [])
 
             if (current.$$route.$auth) {
 
-                if(angular.isFunction(current.$$route.$auth) || angular.isArray(current.$$route.$auth)){
+                if(angular.isFunction(current.$$route.$auth) || angular.isArray(current.$$route.$auth)){//fonction personnalisé pour gérer l'auth
 
                     if (!$authSession.exists()) {
                         $rootScope.$broadcast($authEvents.notAuthenticated);
+                        event.stopPropagation();
                     }else {
 
                         var $stopped = false;
@@ -43,22 +44,32 @@ angular.module('auth', [])
                             $stopped = true;
                         };
 
-                        $injector.invoke(current.$$route.$auth, null, {$stop: $stop});
+                        $injector.invoke(current.$$route.$auth, null, {$stop: $stop, $event:event});
 
                         if ($stopped) {
                             $rootScope.$broadcast($authEvents.notAuthorized);
+                            event.stopPropagation();
                         }
 
                     }
 
                 }else{
-                    if(current.$$route.$auth) { //auth required
-                        if(!$authSession.exists()){
-                            $rootScope.$broadcast($authEvents.notAuthenticated);
+
+                    if(!$authSession.exists()){//authentification simple
+                        $rootScope.$broadcast($authEvents.notAuthenticated);
+                        event.stopPropagation();
+                    }else{
+
+                        if(typeof current.$$route.$auth === 'object') {//authentification avec droits d'accès
+                            if (!$authRoles.getAccessTo(current.$$route.module, current.$$route.fn)) {
+
+                                $rootScope.$broadcast($authEvents.notAuthorized);
+                                event.stopPropagation();
+
+                            }
                         }
                     }
                 }
-
             }
         });
 
@@ -207,7 +218,7 @@ angular.module('auth', [])
             return this;
         };
 
-        this.$get = function($rootScope, $http, $authSession, $authEvents){
+        this.$get = function($rootScope, $http, $location, $authSession, $authRoles, $authEvents){
 
             $rootScope.$on($authEvents.loginSuccess, function(event, args) {
                 $rootScope.account = $authSession.getUser();
@@ -237,6 +248,11 @@ angular.module('auth', [])
                     $location.path(options.route.disconnect);
                 }
             });
+
+            $rootScope.getAccessTo = $authRoles.getAccessTo;
+            $rootScope.isConnect = function(){
+                return $authSession.exists();
+            };
 
             return {
                 store:function(o){
@@ -316,9 +332,10 @@ angular.module('auth', [])
 
         this.whenGetRole = function(k){
             key = k;
+            return this;
         };
 
-        this.$get = function($authSession){
+        this.$get = function($authSession, $injector){
 
             return {
                 /**

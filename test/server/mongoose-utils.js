@@ -1,5 +1,5 @@
 var expect = require('chai').expect,
-    mongoose = require('../../lib/mongoose-utils');
+    mongoose = require('../../lib/utils/mongoose-utils');
 
 describe('mongoose.collections.mergeOptions', function () {
     it('should return merged object with good property 1', function () {

@@ -32,8 +32,8 @@ angular
                 controller: 'SignupCtrl'
             })
             .when('/recipes/:id', {
-              templateUrl: 'views/recipe.html',
-              controller: 'RecipeCtrl'
+                templateUrl: 'views/recipe.html',
+                controller: 'RecipeCtrl'
             })
             .when('/recipes/:page?/:limit?/:search?', {
                 templateUrl: 'views/recipes-list.html',
@@ -43,13 +43,25 @@ angular
                 templateUrl: 'views/recipes-list.html',
                 controller: 'RecipeListCtrl'
             })
+
             .when('/my-recipes', {
-              templateUrl: 'views/my-recipes.html',
-              controller: 'MyRecipesCtrl'
+                templateUrl: 'views/my-recipes.html',
+                controller: 'MyRecipesCtrl',
+                title:'Mes recettes',
+
+                $auth:true
             })
+
             .when('/categories', {
-              templateUrl: 'views/categories.html',
-              controller: 'CategoriesCtrl'
+                templateUrl: 'views/categories.html',
+                controller: 'CategoriesCtrl',
+                title:'Gestion des catégories',
+
+                $auth:{
+                    fn:'edit',
+                    module:'category'
+                }
+
             })
             .otherwise({
                 redirectTo: '/'
